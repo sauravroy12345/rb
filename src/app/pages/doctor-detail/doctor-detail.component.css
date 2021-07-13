@@ -1,0 +1,21 @@
+.heading {
+    color: #000;
+    font-size: 18px;
+}
+
+.doctor-box {
+    height: auto;
+    color: #000;
+}
+
+.doctor-inner {
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    color: #000;
+}
+
+.doctor-detail {
+    font-size: 18px;
+    font-weight: bold;
+}

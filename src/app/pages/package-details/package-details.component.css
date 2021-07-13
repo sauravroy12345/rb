@@ -1,0 +1,21 @@
+.heading{
+    color:#000;
+    font-size: 18px;
+    text-align: center;
+}
+.packages-box{
+    height: auto;
+    color:#000;
+}
+
+.packages-box .mat-icon{
+    color:#2d9436;
+}
+.package{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.package i {
+    font-weight: bold;
+    font-size: 22px;
+}

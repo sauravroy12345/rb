@@ -1,0 +1,6 @@
+{
+    "/api/UserLogin": {
+        "target": "http://rb-api.in:5001/api/UserLogin'",
+        "secure": false
+    }
+}

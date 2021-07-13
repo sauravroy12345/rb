@@ -1,0 +1,36 @@
+.mat-expansion-panel{
+    margin-bottom: 15px;
+}
+.section-title{
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+    color: #000!important;
+}
+.mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+    color: #000!important;
+}
+.para {
+    color: #000;
+    font-size: 15px;
+    text-align: center;
+}
+.quote{
+    font-weight: bold;
+    margin-bottom: 5px!important;
+}
+.quality {
+    padding: 0px;
+    list-style-type: circle;
+    /* text-align: left; */
+    margin-bottom: 10px
+}
+.quality li{
+    display: inline;
+    padding: 0px 15px;
+}
+.qualityInner li{
+    display: block;
+    margin-bottom: 10px;
+}

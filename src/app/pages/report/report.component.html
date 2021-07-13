@@ -1,0 +1,260 @@
+<section class="service-page">
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Report</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="reportClass">
+                    <form [formGroup]="reportForm" (ngSubmit)="reportShow()">
+                        <div class="ml-auto mr-auto userBox">
+                            <!-- <div class="select">
+                                <select class="select-text" required>
+                                <option value="" disabled selected></option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                                <label class="select-label">User List</label>
+                            </div> -->
+                            <label for="">Bill Id :</label>
+                            <div class="row">
+                                <!-- <label for="">Bill Id</label> -->
+                                <div class="col-md-3 form-group">
+                                    <div class="material ">
+                                        <input type="text" required maxlength="2" formControlName="first">
+                                        <span class="borda"></span>
+                                        <label>XX *</label>
+                                    </div>
+                                    <div *ngIf="getControl.first.touched && getControl.first.invalid" class="text-danger">
+                                        <div *ngIf="getControl.first.errors.required">Required.</div>
+                                        <div *ngIf="getControl.first.errors.pattern">Invalid.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <div class="material">
+                                        <input type="text" required maxlength="2" formControlName="secondDigit">
+                                        <span class="borda"></span>
+                                        <label>00 *</label>
+                                    </div>
+                                    <div *ngIf="getControl.secondDigit.touched && getControl.secondDigit.invalid" class="text-danger">
+                                        <div *ngIf="getControl.secondDigit.errors.required">Required.</div>
+                                        <div *ngIf="getControl.secondDigit.errors.pattern">Invalid.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <div class="material">
+                                        <input type="text" required maxlength="2" formControlName="thirdDigit">
+                                        <span class="borda"></span>
+                                        <label>00 *</label>
+                                    </div>
+                                    <div *ngIf="getControl.thirdDigit.touched && getControl.thirdDigit.invalid" class="text-danger">
+                                        <div *ngIf="getControl.thirdDigit.errors.required">Required.</div>
+                                        <div *ngIf="getControl.thirdDigit.errors.pattern">Invalid.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <button class="btn btn-success" [disabled]="reportForm.invalid"><mat-icon>search</mat-icon></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                  
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PatientName}} </td>
+                    </ng-container>
+
+                   
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Biiling Id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.BillID}} </td>
+                    </ng-container>
+
+                  
+                    <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Bill Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.BillDate}} </td>
+                    </ng-container>
+
+                   
+                    <ng-container matColumnDef="symbol">
+                        <th mat-header-cell *matHeaderCellDef> View Details </th>
+                        <td mat-cell *matCellDef="let element"> <a [href]="element.report_image_url_print" target="_blank">{{element.report_image_url_print}}</a> </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tblheader"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+                </table>
+
+            </div>
+        </div> -->
+        <div class="reportClass" *ngIf="dataReport.length !== 0">
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Name</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label>{{dataReport[0]?.PatientName}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Email.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.mobile_no === '' ">N/A</label> -->
+                            <label>{{dataReport[0]?.Email}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Net Amt.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.alt_mobile_no === '' ">N/A</label> -->
+                            <label>{{dataReport[0]?.NetAmt}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Bill Id.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.mobile_no === '' ">N/A</label> -->
+                            <label>{{dataReport[0]?.BillID}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Bill Date.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.alt_mobile_no === '' ">N/A</label> -->
+                            <label>{{dataReport[0]?.BillDate}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reportClass" *ngFor="let item of dataReport">
+            <!-- <div class="row">
+                <div class="col-md-8">
+                    <div class="select">
+                        <select class="select-text"  d="" required>
+                            <option value="" disabled selected></option>
+                            <option value="1">SR</option>
+                            <option value="2">RS</option>
+                        </select>
+                        <label class="select-label">Select</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="javascript:void(0)" [routerLink]="['/users']" routerLinkActive="router-link-active">
+                    <p class="add-mem"><mat-icon aria-hidden="false" class="add-icon">add_circle</mat-icon> Add New Member</p>
+                    </a>
+                </div>
+            </div> -->
+            <!-- <div class="row" style="margin-top:10px;">
+            </div> -->
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Test Name.</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <!-- <label *ngIf="patientData?.mobile_no === '' ">N/A</label> -->
+                            <label>{{item.TestName}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Due Amt</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.landmark === '' ">N/A</label> -->
+                            <label>{{item.DueAmt}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Report Status</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <!-- <label *ngIf="patientData?.Zipcode === '' ">N/A</label> -->
+                            <label>{{item.ReportStatus}} ( <div class="desc" *ngIf="item.ReportStatus !== 'Pending' || item.DueAmt !== '0.00'">
+                                <!-- <label *ngIf="patientData?.PSex === 'M' ">Male</label> -->
+                            <!-- <label *ngIf="patientData?.PSex === 'F' ">Female</label> -->
+                            <a [href]="item.report_image_url_print" target="_blank">View Report</a>
+                        </div>) </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</section>

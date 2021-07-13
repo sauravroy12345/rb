@@ -1,0 +1,44 @@
+.labl {
+    width: 40%;
+    color: #000;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.coln {
+    width: 10%;
+    color: #000;
+}
+
+.desc {
+    width: 40%;
+}
+
+.full-labl {
+    width: 19%;
+    color: #000;
+    font-weight: 500;
+}
+
+.full-coln {
+    width: 5%;
+    color: #000;
+}
+
+.full-desc {
+    width: 76%;
+}
+
+.download {
+    cursor: pointer;
+}
+
+.material input {
+    margin-top: 20px;
+    /* font-size: 18px; */
+    padding: 12px 12px 7px;
+    display: block;
+    width: calc(100% - 24px);
+    border: none;
+    border-radius: 10px;
+}

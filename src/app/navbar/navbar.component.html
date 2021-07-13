@@ -1,0 +1,191 @@
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === true">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a href="javascript:void(0)" mat-list-item>Book OPD Appointment</a>
+    <a href="javascript:void(0)" mat-list-item>Book Home Collection</a>
+    <a href="javascript:void(0)" mat-list-item>Report</a>
+    <a href="javascript:void(0)" mat-list-item>OPD Appointment List</a>
+    <a href="javascript:void(0)" mat-list-item>Home Collection List</a>
+    <a href="javascript:void(0)" mat-list-item>Report Graph</a>
+    <a href="javascript:void(0)" mat-list-item>Change Password</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+<div class="header-top-bar">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-2">
+                <a class="navbar-brand"><img src="assets/img/logo.png" class="logo"></a>
+            </div>
+            <div class="col-lg-10">
+                <ul class="top-bar-info list-inline-item pl-0 mb-0">
+                    <li class="list-inline-item">
+                        <mat-icon aria-hidden="false">location_on</mat-icon>Address P-713 Block A, Lake Town, Kolkata-700089 </li>
+                    <li class="list-inline-item">
+                        <mat-icon aria-hidden="false">email</mat-icon>corporate@rbdiagnostics.com</li>
+                    <li class="list-inline-item">
+                        <mat-icon aria-hidden="false">call</mat-icon>033-3382 3382</li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- <span>rb-diagnostics</span> -->
+<!-- </mat-toolbar> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+           About Us
+          </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" routerLink="about-why-rb">Why RB</a>
+                    <a class="nav-link" routerLink="about-overview">Overviews</a>
+                    <a class="nav-link" routerLink="about-management-team">Our Management Team</a>
+                    <a class="nav-link" routerLink="about-inhouse-doctor">Our Inhouse Doctors</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+            Services
+           </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li class="nav-item dropdown sub-menu-list">
+                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
+               Imaging
+              </a>
+                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="nav-link" routerLink="service-imaging">X-Ray</a>
+                            <a class="nav-link" routerLink="service-imaging">USG</a>
+                            <a class="nav-link" routerLink="service-imaging">CT Scan</a>
+                            <a class="nav-link" routerLink="service-imaging">MRI</a>
+                            <a class="nav-link" routerLink="service-imaging">Dexa Scan</a>
+                            <a class="nav-link" routerLink="service-imaging">Mammography</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown sub-menu-list">
+                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
+               Cardiology
+              </a>
+                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="nav-link" routerLink="service-cardiology">Electrocardiogram</a>
+                            <a class="nav-link" routerLink="service-cardiology">Echocardiogram</a>
+                            <a class="nav-link" routerLink="service-cardiology">Stress Test</a>
+                            <a class="nav-link" routerLink="service-cardiology">Holter Monitoring</a>
+                            <a class="nav-link" routerLink="service-cardiology">Color Doppler</a>
+                            <a class="nav-link" routerLink="service-cardiology">Peripheral</a>
+                            <a class="nav-link" routerLink="service-cardiology">Doppler PFT</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown sub-menu-list">
+                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
+               Neurology
+              </a>
+                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="nav-link" routerLink="service-neurology">EEG</a>
+                            <a class="nav-link" routerLink="service-neurology">EMG</a>
+                            <a class="nav-link" routerLink="service-neurology">NCV</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown sub-menu-list">
+                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
+               Pathology
+              </a>
+                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <a class="nav-link" routerLink="service-pathology">Hematology</a>
+                            <a class="nav-link" routerLink="service-pathology">Cytopathology</a>
+                            <a class="nav-link" routerLink="service-pathology">Microiology</a>
+                            <a class="nav-link" routerLink="service-pathology">Serology</a>
+                            <a class="nav-link" routerLink="service-pathology">Histopathology</a>
+                            <a class="nav-link" routerLink="service-pathology">Cliical Pathology</a>
+                            <a class="nav-link" routerLink="service-pathology">Biochemistry</a>
+                            <a class="nav-link" routerLink="service-pathology">Cytogenetics</a>
+                            <a class="nav-link" routerLink="service-pathology">Flow Cytometry</a>
+                            <a class="nav-link" routerLink="service-pathology">Mass Spectrometry(LC-MS/MS)</a>
+                        </div>
+                    </li>
+                </div>
+
+
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/pages/doctor-list']" routerLinkActive="router-link-active">OPD</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+           Our Centers
+          </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="nav-link" routerLink="centers">Laketown</a>
+                    <a class="nav-link" routerLink="centers">Saltlake</a>
+                    <a class="nav-link" routerLink="centers">Topsia</a>
+                    <a class="nav-link" routerLink="centers">Kankurgachi</a>
+                    <a class="nav-link" routerLink="centers">Andul/Bakulatala</a>
+                    <a class="nav-link" routerLink="centers">Liluah</a>
+                    <a class="nav-link" routerLink="centers">Howrah AC Market</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">News & Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="pages/packages">Packages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="pages/quality">Quality</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="pages/b2b">B2B</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="contact">Contact Us</a>
+            </li>
+            <div class="right-side">
+                <li class="nav-item">
+                    <a class="nav-link">Covid Test Booking</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+             My Account
+            </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="nav-link" [routerLink]="['/users/login']" routerLinkActive="router-link-active">Login</a>
+                        <a class="nav-link" [routerLink]="['/users']" routerLinkActive="router-link-active">Register</a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+
+<!-- </mat-sidenav-content>
+</mat-sidenav-container> -->

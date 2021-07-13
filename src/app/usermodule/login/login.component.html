@@ -1,0 +1,36 @@
+<div class="form_wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="container login">
+            <div class="form-group login-radio">
+                <div class="login-rad">
+                    *<input type="radio" name="LoginType" value="PT" formControlName="LoginType" id="patient"><label for="patient">Patient Login</label>
+                </div>
+                <div class="login-rad">
+                    <input type="radio" name="LoginType" value="CC" formControlName="LoginType" id="corporate"><label for="corporate">Corporate Login</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="material">
+                    <input type="text" formControlName="mobile_no" required maxlength="10">
+                    <span class="borda"></span>
+                    <label>Mobile No. *</label>
+                </div>
+                <div *ngIf="getControl.mobile_no.touched && getControl.mobile_no.invalid" class="text-danger">
+                    <div *ngIf="getControl.mobile_no.errors.required">Mobile No is required.</div>
+                    <div *ngIf="getControl.mobile_no.errors.pattern">Invalid Mobile No.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="material">
+                    <input type="password" formControlName="password" required>
+                    <span class="borda"></span>
+                    <label>Password *</label>
+                </div>
+                <div *ngIf="getControl.password.touched && getControl.password.invalid" class="text-danger">
+                    <div *ngIf="getControl.password.errors.required">Password is required.</div>
+                </div>
+            </div>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="loginForm.invalid">Login</button>
+        </div>
+    </form>
+</div>

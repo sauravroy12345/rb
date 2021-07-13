@@ -1,0 +1,159 @@
+<div class="form_wrapper">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="container register">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="FName" required>
+                        <span class="borda"></span>
+                        <label>First Name *</label>
+                    </div>
+                    <div *ngIf="getControl.FName.touched && getControl.FName.invalid" class="text-danger">
+                        <div *ngIf="getControl.FName.errors.required">First Name is required.</div>
+                        <div *ngIf="userForm.get('FName').errors?.maxlength">Maximum 50 chars.</div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="LName" required>
+                        <span class="borda"></span>
+                        <label>Last Name *</label>
+                    </div>
+                    <div *ngIf="getControl.LName.touched && getControl.LName.invalid" class="text-danger">
+                        <div *ngIf="getControl.LName.errors.required">Last Name is required.</div>
+                        <div *ngIf="userForm.get('LName').errors?.maxlength">Maximum 50 chars.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="Mobile_no" required maxlength="10">
+                        <span class="borda"></span>
+                        <label>Mobile No. *</label>
+                    </div>
+                    <div *ngIf="getControl.Mobile_no.touched && getControl.Mobile_no.invalid" class="text-danger">
+                        <div *ngIf="getControl.Mobile_no.errors.required">Mobile No is required.</div>
+                        <div *ngIf="getControl.Mobile_no.errors.pattern">Invalid Mobile No.</div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="Alt_mobile_no" maxlength="10">
+                        <span class="borda"></span>
+                        <label>Alternate Mobile No.</label>
+                    </div>
+                    <div *ngIf="getControl.Alt_mobile_no.touched && getControl.Alt_mobile_no.invalid" class="text-danger">
+                        <div *ngIf="getControl.Alt_mobile_no.errors.pattern">Invalid Mobile No.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="Email" required>
+                        <span class="borda"></span>
+                        <label>Email *</label>
+                    </div>
+                    <div *ngIf="getControl.Email.touched && getControl.Email.invalid" class="text-danger">
+                        <div *ngIf="getControl.Email.errors.required">Email is required.</div>
+                        <div *ngIf="getControl.Email.errors.pattern">Email is invalid.</div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="material">
+
+                        <input type="date" formControlName="Dateofbirth" required placeholder="D.O.B." [max]="maxDate" onkeydown="return false">
+                        <!-- <mat-icon aria-hidden="false" class="date">date_range</mat-icon> -->
+                        <span class="borda"> *</span>
+                        <!-- <label>D.O.B.</label> -->
+
+                    </div>
+                    <div *ngIf="getControl.Dateofbirth.touched && getControl.Dateofbirth.invalid" class="text-danger">
+                        <div *ngIf="getControl.Dateofbirth.errors.required">DOB is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group login-radio">
+                <div class="login-rad">
+                    * <input type="radio" name="Gender" value="M" formControlName="Gender" id="male"><label for="male">Male</label>
+                </div>
+                <div class="login-rad">
+                    <input type="radio" name="Gender" value="F" formControlName="Gender" id="female"><label for="female">Female</label>
+                </div>
+                <div *ngIf="getControl.Gender.touched && getControl.Gender.invalid" class="text-danger">
+                    <div *ngIf="getControl.Gender.errors.required">Gender is required.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="material-textarea">
+                    <textarea type="text" formControlName="Address" required></textarea>
+                    <div class="borda"></div>
+                    <label>Address *</label>
+                </div>
+                <div *ngIf="getControl.Address.touched && getControl.Address.invalid" class="text-danger">
+                    <div *ngIf="getControl.Address.errors.required">Address is required.</div>
+                    <div *ngIf="userForm.get('Address').errors?.maxlength">Maximum 50 chars.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="Landmark">
+                        <span class="borda"></span>
+                        <label>Landmark</label>
+                    </div>
+                    <div *ngIf="userForm.get('Landmark').errors?.maxlength">Maximum 50 chars.</div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="ZipCode" maxlength="6">
+                        <span class="borda"></span>
+                        <label>Pincode *</label>
+                    </div>
+                    <div *ngIf="getControl.ZipCode.touched && getControl.ZipCode.invalid" class="text-danger">
+                        <div *ngIf="getControl.ZipCode.errors.required">Pincode is required.</div>
+                        <div *ngIf="getControl.ZipCode.errors.pattern">Invalid Pincode</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="City">
+                        <span class="borda"></span>
+                        <label>City</label>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="material">
+                        <input type="text" formControlName="State">
+                        <span class="borda"></span>
+                        <label>State</label>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="userForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!-- <ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="material">
+            <input type="text" formControlName="OTP">
+            <span class="borda"></span>
+            <label>OTP</label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" color="primary" mat-raised-button class="btn back-button slide-save-btn float-right my-4 px-4 mx-0" (click)="modal.close('Close click')">Close</button>
+        <button type="button" color="primary" mat-raised-button class="btn save-button slide-save-btn float-right my-4 px-4 mx-0" (click)="singleAdjustmentForm()">Proceed</button>
+    </div>
+</ng-template> -->

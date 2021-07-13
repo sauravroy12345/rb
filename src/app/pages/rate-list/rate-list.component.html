@@ -1,0 +1,239 @@
+<section class="service-page">
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Lab Test</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- search bar  -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="reportClass">
+                    <!-- <form [formGroup]="reportForm" (ngSubmit)="reportShow()"> -->
+                    <div class="ml-auto mr-auto userBox">
+                        <!-- <div class="select">
+                                <select class="select-text" required>
+                                <option value="" disabled selected></option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                                <label class="select-label">User List</label>
+                            </div> -->
+                        <div class="row">
+                            <!-- <label for="">Bill Id</label> -->
+                            <div class="col-md-2 form-group">
+                                <div class="material ">
+                                    <label for="">Search Test :</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <div class="material">
+                                    <div class="select">
+                                        <select class="select-text" required>
+                                        <option value="" disabled selected></option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                        <label class="select-label">Center List</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <div class="material">
+                                    <input type="text" required [(ngModel)]="search">
+                                    <span class="borda"></span>
+                                    <label>Diagnosis Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-1 form-group">
+                                <button class="btn btn-success" (click)="searchKey()"><mat-icon>search</mat-icon></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <!-- rate list box  -->
+        <!-- *ngFor="let item of rateListArr" -->
+        <div class="reportClass" *ngFor="let item of rateListArr">
+            <!-- <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Service Name</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label *ngIf="item?.service_name === '' ">N/A</label>
+                            <label> {{item?.service_name}} </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Service Key</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label *ngIf="item?.service_key === '' "> N/A </label>
+                            <label> {{item?.service_key}} </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Service Preparation</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label *ngIf="item?.service_preperation === '' ">N/A</label>
+                            <label> {{item?.service_preperation}} </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Report Time (Days).</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="item?.ReportTimeInDays === '' ">N/A</label>
+                            <label>{{item?.ReportTimeInDays}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Price.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="item?.price === '' ">N/A</label>
+                            <label>{{item?.price}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h5 *ngIf="item?.service_key === '' "> N/A </h5>
+                        <h5> {{item?.service_name}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Report Time (Days).</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="item?.ReportTimeInDays === '' ">N/A</label>
+                            <label>{{item?.ReportTimeInDays}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Price (Rs).</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="item?.price === '' ">N/A</label>
+                            <label>{{item?.price}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h5 class="description" (click)="des()"> Description </h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="desClass" *ngIf="desBox" (click)="desHide()">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="user d-flex">
+                            <div class="labl">
+                                <label>Test Key</label>
+                            </div>
+                            <div class="coln">
+                                <label>:</label>
+                            </div>
+                            <div class="desc">
+                                <label *ngIf="item?.service_key === '' ">N/A</label>
+                                <label>{{item?.service_key}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="user d-flex">
+                            <div class="labl">
+                                <label>Preparation Of Test</label>
+                            </div>
+                            <div class="coln">
+                                <label>:</label>
+                            </div>
+                            <div class="desc">
+                                <label *ngIf="item?.service_preperation === '' ">N/A</label>
+                                <label>{{item?.service_preperation}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

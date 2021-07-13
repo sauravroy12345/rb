@@ -1,0 +1,305 @@
+<div class="doctorList">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Book Appointment</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form_wrapper">
+                    <!-- <form> -->
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!-- <select name="" id="" [(ngModel)]="centerId">
+                                    <option value="">Select Branches</option>
+                                    <option *ngFor="let item of branchist" value="{{item.center_id}}">{{item.center_name}}</option>
+                                </select> -->
+                            <div class="select">
+                                <select class="select-text" required [(ngModel)]="centerId">
+                                        <option value=""></option>
+                                    <option *ngFor="let item of branchist" value="{{item.center_id}}">{{item.center_name}}</option>
+                                    </select>
+                                <label class="select-label">Branch</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- <select name="" id="" [(ngModel)]="areaId">
+                                    <option value="">Select Area</option>
+                                    <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}</option>
+                                </select> -->
+                            <div class="select">
+                                <select class="select-text" required [(ngModel)]="areaId">
+                                        <option value="" disabled selected></option>
+                                        <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}</option>
+                                    </select>
+                                <label class="select-label">Area</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- <select name="" id="" [(ngModel)]="specializationId">
+                                    <option value="">Select Department</option>
+                                    <option *ngFor="let item of DepartmentSpecialityList" value="{{item.specialization_id}}">{{item.specialization}}</option>
+                                </select> -->
+                            <div class="select">
+                                <select class="select-text" required [(ngModel)]="specializationId">
+                                        <option value="" disabled selected></option>
+                                        <option *ngFor="let item of DepartmentSpecialityList" value="{{item.specialization_id}}">{{item.specialization}}</option>
+                                    </select>
+                                <label class="select-label">Department</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <!-- <input type="text" placeholder="Enter Doctor Name" [(ngModel)]="doctorName"> -->
+                            <div class="material">
+                                <input type="text" required [(ngModel)]="doctorName">
+                                <span class="borda"></span>
+                                <label>Doctor Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="pure-material-checkbox">
+                                    <input type="checkbox">
+                                    <span>Home Collection</span>
+                                  </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-2" style="text-align:center">
+                            <button mat-raised-button class="search" (click)="doctorSearch()">Search</button>
+                            <button mat-raised-button class="refresh" (click)="reset()">Reset</button>
+                        </div>
+                    </div>
+                    <div class="form_wrapper" *ngIf="doctorList.length === 0"> No Data Found </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let item of doctorList">
+                <div class="doctor-box">
+                    <img *ngIf="item.DocPicture !== null" src="{{item.DocPicture}}" class="doctor" />
+                    <img *ngIf="item.DocPicture === null" src="../../../assets/img/demo.jpg" class="doctor" />
+                    <p class="heading">{{item.doctor_name}}</p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>business_center</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            {{item.specialization}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>school</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            {{item.Designation}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>place</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            {{item.Area}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>payments</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            {{item.Fees}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-3" style="text-align:center">
+                            <!-- <a routerLink="/doctor-details"> -->
+                            <button mat-raised-button class="profile" (click)="viewProfile(item)">View Profile</button>
+                            <!-- </a> -->
+                            <a routerLink="/appointment"><button mat-raised-button class="profile">Book Appointment</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end -->
+            <!-- <div class="col-md-4">
+                <div class="doctor-box">
+                    <img src="assets/img/doctor.jpg" class="doctor"/>
+                    <p class="heading">Dr Anup Daga</p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>business_center</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            Radiologist
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>school</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            CONSULTANT SONOLOGIST
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>place</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            Laketown
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>payments</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            01
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-3" style="text-align:center"> 
+                            <button mat-raised-button class="profile">View Profile</button>
+                            <button mat-raised-button class="profile">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="doctor-box">
+                    <img src="assets/img/doctor.jpg" class="doctor"/>
+                    <p class="heading">Dr. Anup Khetan</p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>business_center</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            Cardiologist
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>school</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            MD DNB
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>place</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                           Topsia
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <mat-icon>payments</mat-icon>
+                        </div>
+                        <div class="col-md-10">
+                            900
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-3" style="text-align:center"> 
+                            <button mat-raised-button class="profile">View Profile</button>
+                            <button mat-raised-button class="profile">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- <div class="form_wrapper">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="" height="100px" width="100px" alt="No Image">
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <div class="full-labl">
+                                <label>Name</label>
+                            </div>
+                            <div class="full-coln">
+                                <label>:</label>
+                            </div>
+                            <div class="full-desc">
+                                <label>{{item.doctor_name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <div class="full-labl">
+                                <label>Specialization</label>
+                            </div>
+                            <div class="full-coln">
+                                <label>:</label>
+                            </div>
+                            <div class="full-desc">
+                                <label>{{item.specialization}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <div class="full-labl">
+                                <label>Designation</label>
+                            </div>
+                            <div class="full-coln">
+                                <label>:</label>
+                            </div>
+                            <div class="full-desc">
+                                <label>{{item.Designation}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <button class="btn btn-success" (click)="viewProfile(item.doctor_id)">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <div class="full-labl">
+                                <label>Area</label>
+                            </div>
+                            <div class="full-coln">
+                                <label>:</label>
+                            </div>
+                            <div class="full-desc">
+                                <label>{{item.Area}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <div class="full-labl">
+                                <label>Fees</label>
+                            </div>
+                            <div class="full-coln">
+                                <label>:</label>
+                            </div>
+                            <div class="full-desc">
+                                <label></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="user d-flex">
+                            <button class="btn btn-success">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

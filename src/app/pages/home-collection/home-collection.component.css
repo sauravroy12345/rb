@@ -1,0 +1,40 @@
+.form_wrapper {
+    width: 800px;
+}
+
+.section-title {
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+
+.search {
+    position: absolute;
+    top: 11.3%;
+    right: 3%;
+    font-size: 24px;
+    color: #fff;
+    background: #1A237E;
+    padding: 1px;
+    font-weight: 700;
+}
+
+.tab {
+    max-height: 230px;
+    overflow-y: scroll;
+    border: 2px solid #ccc;
+}
+
+#selectedTest {
+    text-align: left;
+    border: 4px solid #ccc;
+    margin-top: 40px !important;
+    margin: 10px;
+    padding: 5px;
+    max-height: 100px;
+    min-height: 50px;
+    overflow-y: scroll;
+}
+
+.bgC {
+    background-color: rgb(135, 243, 135);
+}

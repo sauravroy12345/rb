@@ -1,0 +1,51 @@
+<div class="after-login">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <div class="col-md-12">
+                <div class="section-title">
+                    <h2>My Account</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sideNav">
+                    <ul class="side-nav">
+                        <a [routerLink]="['/users/sidenav/doctor-list']" routerLinkActive="router-link-active">
+                            <li>Book OPD Appointment</li>
+                        </a>
+                        <a routerLink="/pages/home-collection">
+                            <li>Book Home Collection</li>
+                        </a>
+                        <a routerLink="/users/sidenav/past-report-list">
+                            <li>Past Report</li>
+                        </a>
+                        <a [routerLink]="['/users/sidenav/opd-appoint-list']" routerLinkActive="router-link-active">
+                            <li>OPD Appointment List</li>
+                        </a>
+                        <a>
+                            <li>Home Collection List</li>
+                        </a>
+                        <a [routerLink]="['/users/sidenav/graph-report']" routerLinkActive="router-link-active">
+                            <li>Report Graph</li>
+                        </a>
+                        <a [routerLink]="['/users/sidenav/view-members']" routerLinkActive="router-link-active">
+                            <li>View Members</li>
+                        </a>
+                        <a [routerLink]="['/users/sidenav/change-password']" routerLinkActive="router-link-active">
+                            <li>Change Password</li>
+                        </a>
+                        <a>
+                            <li (click)="logout()">Logout</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!-- <mat-icon c>menu</mat-icon> -->
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

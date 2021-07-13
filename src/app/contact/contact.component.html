@@ -1,0 +1,100 @@
+<section class="service-page">
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="contactInner">
+            <p class="cont">We'd
+                <mat-icon style="color:#dc1511;">favorite_border</mat-icon>to help!<br> We like to create thing with happiness. Feel free to connect with us.
+            </p>
+            <div class="form_wrapper">
+                <div class="row">
+                    <div class="col-md-7">
+                        <form [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+                            <div class="container login">
+                                <div class="form-group">
+                                    <div class="material">
+                                        <input type="text" required formControlName="name">
+                                        <span class="borda"></span>
+                                        <label>Full Name *</label>
+                                    </div>
+                                    <div *ngIf="getControl.name.touched && getControl.name.invalid" class="text-danger">
+                                        <div *ngIf="getControl.name.errors.required">Name No is required.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="material">
+                                        <input type="email" required formControlName="email">
+                                        <span class="borda"></span>
+                                        <label>Email *</label>
+                                    </div>
+                                    <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+                                        <div *ngIf="getControl.email.errors.required">Email is required.</div>
+                                        <div *ngIf="getControl.email.errors.pattern">Invalid Email.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="material">
+                                        <input type="text" required formControlName="mobile_no">
+                                        <span class="borda"></span>
+                                        <label>Mobile *</label>
+                                    </div>
+                                    <div *ngIf="getControl.mobile_no.touched && getControl.mobile_no.invalid" class="text-danger">
+                                        <div *ngIf="getControl.mobile_no.errors.required">Mobile No is required.</div>
+                                        <div *ngIf="getControl.mobile_no.errors.pattern">Invalid Mobile No.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="material-textarea">
+                                        <textarea type="text" formControlName="sms"></textarea>
+                                        <div class="borda"></div>
+                                        <label>Message</label>
+                                    </div>
+                                    <div *ngIf="getControl.sms.touched && getControl.sms.invalid" class="text-danger">
+                                        <!-- <div *ngIf="getControl.sms.errors.required">Mobile No is required.</div> -->
+                                        <!-- <div *ngIf="getControl.sms.errors.pattern">Invalid Mobile No.</div> -->
+                                    </div>
+                                </div>
+                                <button class="btn btn-success btn-block" type="submit" [disabled]="contactForm.invalid">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="col-md-5 contact_right_side">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <mat-icon>location_on</mat-icon>
+                            </div>
+                            <div class="col-md-11">
+                                <p>P -713, Block - A, Laketown Road, Jessore Road, Laketown, Kolkata - 700089, Near Jaya Cinema Hall</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <mat-icon>email</mat-icon>
+                            </div>
+                            <div class="col-md-11">
+                                <p>corporate@rbdiagnostics.com</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <mat-icon>call</mat-icon>
+                            </div>
+                            <div class="col-md-11">
+                                <p>033-408504085/033-33823382.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

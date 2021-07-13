@@ -1,0 +1,47 @@
+.welcome {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d9436;
+    letter-spacing: 0.5px;
+}
+.form_wrapper{
+    padding: 5px 15px;
+    width: 700px;
+    margin: 0% auto 3%;
+}
+.add-mem{
+    margin: 4px 0px;
+    color: #2d9436;
+}
+.add-icon{
+    position: relative;
+    top: 5px;
+}
+.labl{
+    width:40%;
+    color: #000;
+    font-weight: 500;
+    font-size: 16px;
+}
+.coln{
+    width:10%;
+    color: #000;
+}
+.desc{
+    width:40%;
+}
+
+.full-labl{
+    width:19%;
+    color: #000;
+    font-weight: 500;
+   
+}
+.full-coln {
+    width: 5%;
+    color: #000;
+}
+.full-desc{
+    width:76%;
+}

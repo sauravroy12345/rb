@@ -1,0 +1,125 @@
+<section class="service-page">
+    <div class="container">
+        <div class="service">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>FAQ</h2>
+                        <div class="divider mx-auto my-4"></div>
+                    </div>
+                </div>
+            </div>
+            <mat-accordion *ngFor="let item of faqArray">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{item.FaqName}}
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                      
+                    </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    {{item.FaqDesc}}
+                </mat-expansion-panel>
+            </mat-accordion>
+            <!-- <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        When can I come for reports?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   The report delivery timing is 7-8:30PM. But if you give your email ID at the time of billing then reports are emailed usually much earlier, provided the dues are cleared.
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        What are your test rates ?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   You can find all the rates at http://www.rbdiagnostic.com/rate
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        How do I book my test ?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   There are multiple ways to book tests: 1. Call our helpline number 033-4085-4085 and one of our representatives will be happy to help you. 2. From our website https://www.rbdiagnostic.com/homecollection 3. Download our mobile app https://play.google.com/store/apps/details?id=com.rblis.itsdose&hl=en
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        Does RB Diagnostic provide in home services ? and how do I avail the service?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   Yes, RB Diagnostics provide Sample Home Pick up and report Delivery services, Call our Help line to Know More.
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        Where are Your Branches ?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   We have 7 centres apart from our MRI facility at Lake town. 1) Lake Town 2) Kankurgachi 3) Salt Lake 4) Topsia 5) Bakultala 6) Liluah 7) Howrah(AC) Addresses and locations at https://www.rbdiagnostic.com/ourcenter#
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        Do the centre's have OPD doctors for consultation ?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   Yes, RB Diagnostic OPD division is one of the finest in the city. We have the best consulting doctors visiting our centre's regularly. Book your appointment by calling our central help line 033-4085-4085. You can also book online at: https://www.rbdiagnostic.com/opds
+                 </mat-expansion-panel>
+             </mat-accordion>
+             <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                      (closed)="panelOpenState = false">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                        If i have grievance, how do i convey ?
+                     </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                       
+                     </mat-panel-description> -->
+            <!-- </mat-expansion-panel-header>
+                   Call us at out central line and ask to register a complaint, you could also write to corporate@rbdiagnostics.com
+                 </mat-expansion-panel>
+             </mat-accordion> -->
+        </div>
+    </div>
+</section>

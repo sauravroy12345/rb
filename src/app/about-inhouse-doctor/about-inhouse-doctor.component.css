@@ -1,0 +1,17 @@
+.section-title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.service-box{
+    height:550px;
+    color: #000;
+}
+.doctors-info{
+    padding: 0px;
+}
+.doctors-info li{
+    list-style-type: none;
+    text-align: center;
+    margin: 0px;
+    font-weight: 600;
+}

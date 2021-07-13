@@ -1,0 +1,75 @@
+<section class="service-page">
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Past Report</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form_wrapper">
+            <form [formGroup]="pastReport">
+                <div class="select">
+                    <select class="select-text" required (change)="memberChange($event.target.value)" onload="" formControlName="user_id">
+                <option value=""></option>
+            <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}" [selected]="i == 0">{{item.name}}</option>
+            </select>
+                    <label class="select-label">Select Patient Name</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="material">
+                            <input type="date" required [max]="maxDate" [min]="minDate" formControlName="From_date" onkeydown="return false">
+                            <span class="borda"></span>
+                            <!-- <label>From Date</label> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="material">
+                            <input type="date" required [max]="maxDate1" [min]="minDate1" formControlName="To_date" onkeydown="return false">
+                            <span class="borda"></span>
+                            <!-- <label>To Date</label> -->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="graphReportClass" *ngIf="patientPastReportArr.length === 0">
+            <h3>No Records Found</h3>
+        </div>
+        <div class="graphReportClass download" *ngFor="let item of patientPastReportArr">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{item.report_image_url_print}}" target="_blank">
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-md-11">
+                                <div class="user d-flex">
+                                    <div class="full-labl">
+                                        <label>Test Name</label>
+                                    </div>
+                                    <div class="full-coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="full-desc">
+                                        <label> </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <mat-icon class="material-icons-outlined">
+                        arrow_forward_ios
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

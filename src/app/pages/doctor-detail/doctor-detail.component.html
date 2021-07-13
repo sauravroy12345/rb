@@ -1,0 +1,78 @@
+<div class="doctor-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Doctor Profile</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="doctor-box">
+                    <img *ngIf="doctorData.DocPicture !== null" src="{{doctorData.DocPicture}}" class="doctor" />
+                    <img *ngIf="doctorData.DocPicture === null" src="../../../assets/img/demo.jpg" class="doctor" />
+                    <ul class="doctor-inner">
+                        <li class="doctor-detail">{{doctorData.doctor_name}}</li>
+                        <li>{{doctorData.specialization}}</li>
+                        <li>{{doctorData.Designation}}</li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Membership</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Training</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Awards</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Center Name</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p>{{doctorData.center_name}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Center Address</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p>{{doctorData.center_address}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="doctor-detail">Center URL</p>
+                        </div>
+                        <div class="col-md-10">
+                            <p><a href="{{doctorData.center_URL}}" target="_blank" rel="noopener noreferrer">{{doctorData.center_URL}}</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-3" style="text-align:center">
+                            <button mat-raised-button class="profile" [routerLink]="['/appointment']" routerLinkActive="router-link-active">Book Appointment</button>
+                            <a routerLink="/pages/doctor-list"><button mat-raised-button class="profile">Go to Doctor List</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

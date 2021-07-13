@@ -1,0 +1,291 @@
+<section class="service-page">
+    <div class="container">
+        <div class="contact">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2>Home Collection</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="form_wrapper">
+            <form [formGroup]="homeColform" (ngSubmit)="hcCollection(Content)">
+                <div class="container register">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <!-- <p class="heading">Please fill your Details</p> -->
+                            <button class="btn btn-success" type="button" (click)="test(longContent)">* Click here to Add/Update Test</button>
+                            <div *ngIf="getControl.services_list.touched && getControl.services_list.invalid" class="text-danger">
+                                <div *ngIf="getControl.services_list.errors.required">Selection is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row" *ngIf="serviceNameArr.length !== 0">
+                                <div class="col-md-6"><span>Selected Test : {{serviceArr.length}}</span></div>
+                                <div class="col-md-6">Total Price: {{price}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" maxlength="10" formControlName="Mobile_no" (keyup)="detailsBymobile($event.target)">
+                                <span class="borda"></span>
+                                <label>Mobile No.</label>
+                            </div>
+                            <div *ngIf="getControl.Mobile_no.touched && getControl.Mobile_no.invalid" class="text-danger">
+                                <div *ngIf="getControl.Mobile_no.errors.required">Mobile No is required.</div>
+                                <div *ngIf="getControl.Mobile_no.errors.pattern">Invalid Mobile No.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" maxlength="10" formControlName="Alt_mobile_no">
+                                <span class="borda"></span>
+                                <label>Alt Mobile No.</label>
+                            </div>
+                            <div *ngIf="getControl.Alt_mobile_no.touched && getControl.Alt_mobile_no.invalid" class="text-danger">
+                                <div *ngIf="getControl.Alt_mobile_no.errors.pattern">Invalid Mobile No.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="famClass" class="row" *ngIf="familyMemberList.length !== 0">
+                        <div class="col-md-12 form-group">
+                            <div class="select">
+                                <select class="select-text" (change)="memberChange($event.target.value)">
+                                    <option value=""></option>
+            <option *ngFor="let item of familyMemberList" value="{{item.user_id}}">{{item.name}}</option>
+                                </select>
+                                <label class="select-label">Select</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" formControlName="FName">
+                                <span class="borda"></span>
+                                <label>First Name</label>
+                            </div>
+                            <div *ngIf="getControl.FName.touched && getControl.FName.invalid" class="text-danger">
+                                <div *ngIf="getControl.FName.errors.required">First Name is required.</div>
+                                <div *ngIf="homeColform.get('FName').errors?.maxlength">Maximum 50 chars.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" formControlName="LName">
+                                <span class="borda"></span>
+                                <label>Last Name</label>
+                            </div>
+                            <div *ngIf="getControl.LName.touched && getControl.LName.invalid" class="text-danger">
+                                <div *ngIf="getControl.LName.errors.required">First Name is required.</div>
+                                <div *ngIf="homeColform.get('LName').errors?.maxlength">Maximum 50 chars.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" formControlName="Email">
+                                <span class="borda"></span>
+                                <label>Email.</label>
+                            </div>
+                            <div *ngIf="getControl.Email.touched && getControl.Email.invalid" class="text-danger">
+                                <div *ngIf="getControl.Email.errors.required">Email is required.</div>
+                                <div *ngIf="getControl.Email.errors.pattern">Email is invalid.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group login-radio">
+                            <div class="login-rad">
+                                * <input type="radio" name="Gender" value="M" formControlName="Gender" id="male"><label for="male">Male</label>
+                            </div>
+                            <div class="login-rad">
+                                <input type="radio" name="Gender" value="F" formControlName="Gender" id="female"><label for="female">Female</label>
+                            </div>
+                            <div *ngIf="getControl.Gender.touched && getControl.Gender.invalid" class="text-danger">
+                                <div *ngIf="getControl.Gender.errors.required">Gender is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="date" formControlName="Dateofbirth" placeholder="D.O.B." [max]="dobMax" onkeydown="return false">
+                                <!-- <mat-icon aria-hidden="false" class="date">date_range</mat-icon> -->
+                                <span class="borda"> *</span>
+                                <!-- <label>D.O.B.</label> -->
+                            </div>
+                            <div *ngIf="getControl.Dateofbirth.touched && getControl.Dateofbirth.invalid" class="text-danger">
+                                <div *ngIf="getControl.Dateofbirth.errors.required">DOB is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="material-textarea">
+                            <textarea type="text" formControlName="Address"></textarea>
+                            <div class="borda"></div>
+                            <label>Address</label>
+                        </div>
+                        <div *ngIf="getControl.Address.touched && getControl.Address.invalid" class="text-danger">
+                            <div *ngIf="getControl.Address.errors.required">Address is required.</div>
+                            <div *ngIf="homeColform.get('Address').errors?.maxlength">Maximum 50 chars.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" formControlName="City">
+                                <span class="borda"></span>
+                                <label>City</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" maxlength="6" formControlName="ZipCode">
+                                <span class="borda"></span>
+                                <label>* Pincode</label>
+                            </div>
+                            <div *ngIf="getControl.ZipCode.touched && getControl.ZipCode.invalid" class="text-danger">
+                                <div *ngIf="getControl.ZipCode.errors.required">Pincode is required.</div>
+                                <div *ngIf="getControl.ZipCode.errors.pattern">Invalid Pincode</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text" formControlName="landmark">
+                                <span class="borda"></span>
+                                <label>Landmark</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="text">
+                                <span class="borda"></span>
+                                <label>Reference Doctor Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <div class="material">
+                                <input type="date" formControlName="Rdate" placeholder="Appointment Date." [max]="maxDate" [min]="minDate" onkeydown="return false">
+                                <!-- <mat-icon aria-hidden="false" class="date">date_range</mat-icon> -->
+                                <span class="borda"> *</span>
+                                <!-- <label>Appointment Date</label> -->
+                            </div>
+                            <div *ngIf="getControl.Rdate.touched && getControl.Rdate.invalid" class="text-danger">
+                                <div *ngIf="getControl.Rdate.errors.required">Appointment Date is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <div class="select">
+                                <select class="select-text" formControlName="Rtime" (change)=onTime($event)>
+                                    <option value=""></option>
+            <option *ngFor="let item of timeArr" value="{{item}}">{{item}}</option>
+                                </select>
+                                <label class="select-label">Select</label>
+                            </div>
+                            <div *ngIf="getControl.Rtime.touched && getControl.Rtime.invalid" class="text-danger">
+                                <div *ngIf="getControl.Rtime.errors.required">Appointment Time is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="material-textarea">
+                            <textarea type="text" formControlName="comments"></textarea>
+                            <div class="borda"></div>
+                            <label>Comment</label>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit" [disabled]="homeColform.invalid">Book Home Collection without Payment</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Test Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search by Name" (keyup)="search($event.target)">
+            <!-- <ng-select class="" [items]="partList" bindValue="partId" bindLabel="partDescription" placeholder="Select Part" (change)="searchByPart($event)">
+            </ng-select> -->
+            <mat-icon class="search">search</mat-icon>
+        </div>
+        <div class="tab">
+            <table class="table table-striped tabl">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Test Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i = index ; let item of testData | filter: data ">
+                        <td id="colCBox_{{i}}" class=""><input type="checkbox" name="" id="{{item.service_id}}" [checked]="toggleCheckBox(item.service_id)" (change)="selectTest(item.service_id , item.service_name, item.price , $event.target, i)"></td>
+                        <td id="colC_{{i}}" class="">{{item.service_name}}</td>
+                        <td id="colCB_{{i}}" class="">{{item.price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="selectedTest" *ngIf="serviceNameArr.length !== 0">
+            <div *ngFor="let item of serviceNameArr">
+                {{item}}
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" *ngIf="serviceNameArr.length !== 0" class="btn btn-success" (click)="modal.close('Close click')">Save the selected Test and Exit from this window </button>
+    </div>
+</ng-template>
+
+<!-- for showing msg -->
+
+<ng-template #Content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Alert</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeSms()">
+            <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <h3>Booking SuccessFully</h3>
+            Home Collection Booking Completed Successfully for {{patientName}}.
+            <strong>Dated : {{appointmentDate}} at Schedule location {{locationofPatioent}} in between {{appointmentTime}} and your  Appointment Id Is {{appointmentId}} </strong>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="closeSms()">Close </button>
+    </div>
+</ng-template>

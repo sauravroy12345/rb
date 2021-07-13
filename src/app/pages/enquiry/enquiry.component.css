@@ -1,0 +1,17 @@
+.form_wrapper{
+    width:800px;
+}
+.section-title{
+    text-align: center;
+    /* margin-bottom: 40px; */
+}
+.input_fileupload--hidden{
+    display:none;
+  }
+  .fileUpload{
+      display: flex;
+  }
+  .fileUploader{
+      background-color: #218838;
+      color: #fff;
+  }

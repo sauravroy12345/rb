@@ -1,0 +1,23 @@
+
+a:hover{
+    color:#000;
+}
+.section-title{
+    text-align: center;
+}
+.packages-box{
+    height: 430px;
+    color:#000;
+}
+
+.packages-box .mat-icon{
+    color:#2d9436;
+}
+.package{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.package i {
+    font-weight: bold;
+    font-size: 22px;
+}
