@@ -218,7 +218,53 @@ a:hover {
     right: 5%;
     color: #2d9436;
 } */
-
+/* materia input radio css */
+.radio {
+    position: relative;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 14px;
+    margin: 12px  12px 12px 0px;
+  }
+  .radio .label {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c8ccd4;
+    border-radius: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .radio .label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #28a745;
+    transform: scale(0);
+    transition: all 0.2s ease;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .radio:hover .label:after {
+    transform: scale(3.6);
+  }
+  input[type="radio"]:checked + .label {
+    border-color: #28a745;
+  }
+  input[type="radio"]:checked + .label:after {
+    transform: scale(1);
+    transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+    opacity: 1;
+  }
+  .hidden {
+    display: none;
+  }
 
 /* for nav modification */
 
@@ -352,9 +398,7 @@ a:hover {
     margin-left: 8px;
 }
 
-.service {
-    padding: 50px 0px;
-}
+
 
 .mat-expansion-panel {
     box-shadow: 0 1px 10px -1px rgb(0 0 0 / 20%)!important;
@@ -378,6 +422,8 @@ a:hover {
 
 .service-img {
     width: 100%;
+    border: none;
+    border-radius: 10px;
 }
 
 .heading {
@@ -420,8 +466,8 @@ a:hover {
     background-color: #f4f9fc;
 }
 
-.service-box,
-.doctor-box {
+.services-box,
+.doctor-box, .management-team-box, .inhouse-doctor-box, .doctor-detail-box, .packages-box{
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
@@ -429,7 +475,8 @@ a:hover {
     background: #fff;
     font-size: 15px;
     margin-bottom: 30px;
-    height: 250px;
+    height: 100%;
+    color: #000;
 }
 
 .heading {
@@ -445,29 +492,30 @@ a:hover {
     margin: 10px 0px 20px 0px;
     background-color: #f4f9fc;
 }
-
-
-/* about page css */
-
+.divider {
+    width: 40px;
+    height: 5px;
+    background: #e12454;
+}
 .section-title {
     text-align: center;
     margin-bottom: 0px;
     padding: 10px;
 }
 
-.about-page {
+.about-page, .service-page, .center-page, .quality-page, .faq-page, .b2b-page, .contact-page, .appointment-page, .doctor-profile-page, .package-page, .home-collection-page{
     background-color: #f4f9fc;
-    margin: 40px 0px;
-    height: 150px;
+    /* margin: 40px 0px; */
+    height: 160px;
 }
 
-.about-us {
+.about-us, .services, .center, .quality, .faq, .b2b, .contact, .appointment, .doctor-profile, .package, .home-collection{
     position: relative;
 }
 
-.about-box {
+.about-box, .service-box, .center-cont-box, .quality-box, .faq-box, .b2b-box, .contact-box, .appointment-box, .doctor-profile-box, .package-box, .home-collection-box{
     position: relative;
-    margin-top: -90px;
+    margin-top: -55px;
     background: #fff;
     width: 1200px;
     display: block;
@@ -477,7 +525,7 @@ a:hover {
     box-shadow: 0 1px 10px -1px rgb(0 0 0 / 20%);
     border: none;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .reportClass {
@@ -735,16 +783,7 @@ a:hover {
 
 /* contact page css */
 
-.contact {
-    padding: 50px 0px 0px;
-}
 
-.contactInner .mat-icon {
-    position: relative;
-    top: 4px;
-    font-size: 20px;
-    left: -1px;
-}
 
 .contact_right_side {
     color: #000;
@@ -907,4 +946,7 @@ a:hover {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     }
+}
+.mb{
+    margin-bottom: 20px;
 }

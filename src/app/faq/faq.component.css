@@ -1,10 +1,7 @@
 .mat-expansion-panel{
     margin-bottom: 15px;
 }
-.section-title{
-    text-align: center;
-    /* margin-bottom: 40px; */
-}
+
 .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
     color: #000!important;
 }

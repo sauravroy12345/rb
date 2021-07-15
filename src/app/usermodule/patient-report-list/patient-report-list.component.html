@@ -17,22 +17,38 @@
                 <option value=""></option>
             <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}" [selected]="i == 0">{{item.name}}</option>
             </select>
-                    <label class="select-label">Select Patient Name</label>
+                    <label class="select-label"> Patient Name</label>
                 </div>
+              
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="material">
-                            <input type="date" required [max]="maxDate" [min]="minDate" formControlName="From_date" onkeydown="return false">
-                            <span class="borda"></span>
-                            <!-- <label>From Date</label> -->
+                    <div class=" col-md-4 finalCial">
+                        <div class="select">
+                            <select class="select-text" formControlName="FYear" (click)="finalcialYearEvent($event.target)">
+                                <option value=""></option>
+                                <option *ngFor="let item of finacialYear; let i = index" value="{{item.FYear}}" [selected]="i == 0"> {{item.FYear}} </option>
+                            </select>
+                        <label class="select-label"> Financial Year</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="material">
-                            <input type="date" required [max]="maxDate1" [min]="minDate1" formControlName="To_date" onkeydown="return false">
+                            <input type="text" required [max]="maxDate" [min]="minDate" formControlName="From_date" onkeydown="return false" onfocus="(this.type='date')" onfocusout="(this.type='text')">
                             <span class="borda"></span>
-                            <!-- <label>To Date</label> -->
+                            <label>From Date</label>
+                        </div>
+                        <div *ngIf="getControl.From_date.touched && getControl.From_date.invalid" class="text-danger">
+                            <div *ngIf="getControl.From_date.errors.required">From date is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="material">
+                            <input type="text" required [max]="maxDate1" [min]="minDate1" formControlName="To_date" onkeydown="return false" onfocus="(this.type='date')" onfocusout="(this.type='text')">
+                            <span class="borda"></span>
+                            <label>To Date</label>
+                        </div>
+                        <div *ngIf="getControl.To_date.touched && getControl.To_date.invalid" class="text-danger">
+                            <div *ngIf="getControl.To_date.errors.required">To date is required.</div>
                         </div>
                     </div>
                 </div>
@@ -42,9 +58,69 @@
         <div class="graphReportClass" *ngIf="patientPastReportArr.length === 0">
             <h3>No Records Found</h3>
         </div>
-        <div class="graphReportClass download" *ngFor="let item of patientPastReportArr">
-            <div class="row">
+        <div class="graphReportClass" *ngIf="patientPastReportArr.length !== 0">
+            <div class="row" style="margin-top:10px;">
                 <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Patient Name</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label> {{patientPastReportArr[0]?.PatientName}} </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Email Id</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label> {{patientPastReportArr[0]?.Email}} </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+        
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Bill Id.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label> {{patientPastReportArr[0]?.BillID}} </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Net Amt (Rs).</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label> {{patientPastReportArr[0]?.NetAmt}} </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="graphReportClass download" *ngFor="let item of patientPastReportArr">
+            <div class="row" *ngIf="item.ReportStatus === 'Completed'">
+                <div class="col-md-11">
                     <a href="{{item.report_image_url_print}}" target="_blank">
                         <div class="row" style="margin-top:10px;">
                             <div class="col-md-11">
@@ -56,17 +132,98 @@
                                         <label>:</label>
                                     </div>
                                     <div class="full-desc">
-                                        <label> </label>
+                                        <label> {{item.TestName}} </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                    
+                                <div class="user d-flex">
+                                    <div class="labl">
+                                        <label>Due Amt (Rs).</label>
+                                    </div>
+                                    <div class="coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="desc">
+                                        <label> {{item.DueAmt}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="user d-flex">
+                                    <div class="labl">
+                                        <label>Status.</label>
+                                    </div>
+                                    <div class="coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="desc">
+                                        <label> {{item.ReportStatus}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </a>
                 </div>
                 <div class="col-md-1">
                     <mat-icon class="material-icons-outlined">
                         arrow_forward_ios
                     </mat-icon>
+                </div>
+            </div>
+            <div class="row" *ngIf="item.ReportStatus !== 'Completed'">
+                <div class="col-md-11">
+                        <div class="row" style="margin-top:10px;">
+                            <div class="col-md-12">
+                                <div class="user d-flex">
+                                    <div class="full-labl">
+                                        <label>Test Name</label>
+                                    </div>
+                                    <div class="full-coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="full-desc">
+                                        <label> {{item.TestName}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                    
+                                <div class="user d-flex">
+                                    <div class="labl">
+                                        <label>Due Amt (Rs).</label>
+                                    </div>
+                                    <div class="coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="desc">
+                                        <label> {{item.DueAmt}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="user d-flex">
+                                    <div class="labl">
+                                        <label>Status.</label>
+                                    </div>
+                                    <div class="coln">
+                                        <label>:</label>
+                                    </div>
+                                    <div class="desc">
+                                        <label> {{item.ReportStatus}} </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>

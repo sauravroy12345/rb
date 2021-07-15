@@ -33,7 +33,7 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'service-imaging/:Id/:title',
+        path: 'service-imaging/:id/:title',
         component: ServiceImagingComponent
       },
       {

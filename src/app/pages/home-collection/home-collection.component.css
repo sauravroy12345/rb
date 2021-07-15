@@ -1,5 +1,5 @@
-.form_wrapper {
-    width: 800px;
+.home-collection-box {
+    width: 1000px;
 }
 
 .section-title {
@@ -9,7 +9,7 @@
 
 .search {
     position: absolute;
-    top: 11.3%;
+    top: 5.3%;
     right: 3%;
     font-size: 24px;
     color: #fff;

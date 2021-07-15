@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { RbService } from 'src/app/rb.service';
@@ -20,7 +20,7 @@ export class HomeCollectionComponent implements OnInit {
   serviceArr: any = [];
   price = 0;
   serviceNameArr: any = [];
-
+  packageReqDAta: any = [];
   // fetching data into modal
   appointmentId: string;
   patientName: string;
@@ -33,7 +33,7 @@ export class HomeCollectionComponent implements OnInit {
   maxDate: any = this.datePipe.transform(new Date().setDate(new Date().getDate() + 15), 'yyyy-MM-dd');
   minDate: any = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
   constructor(private rbservice: RbService, private toaster: ToastrService, private router: Router, private fb: FormBuilder,
-              private datePipe: DatePipe, private modalService: NgbModal, config: NgbModalConfig) {
+              private datePipe: DatePipe, private modalService: NgbModal, config: NgbModalConfig, private aroute: ActivatedRoute) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -44,7 +44,7 @@ export class HomeCollectionComponent implements OnInit {
     FName: ['', [Validators.required, Validators.maxLength(50)]],
     LName: ['', [Validators.required, Validators.maxLength(50)]],
     Mobile_no: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-    Alt_mobile_no: ['' , Validators.pattern('^[0-9]{10}$')],
+    Alt_mobile_no: ['', Validators.pattern('^[0-9]{10}$')],
     Email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     Gender: ['', [Validators.required]],
     Dateofbirth: ['', [Validators.required]],
@@ -105,8 +105,14 @@ export class HomeCollectionComponent implements OnInit {
   ngOnInit(): void {
     this.timeArr = this.returnTimesInBetween('06:00:00', '18:00:00');
     this.testList();
-    // document.getElementById('colC').classList.remove('bgC');
-    // document.getElementById('colCB').classList.remove('bgC');
+    // for selected test
+    this.aroute.params.subscribe((res: any) => {
+      // tslint:disable-next-line:radix
+      this.serviceArr.push(parseInt(res.service_id));
+      this.serviceNameArr.push(atob(res.service_name));
+      // tslint:disable-next-line:radix
+      this.price = parseInt(res.price);
+    });
   }
 
   get getControl(): any {
@@ -186,12 +192,12 @@ export class HomeCollectionComponent implements OnInit {
           if (res.data.length === 0) {
             this.familyMemberList = [];
           } else {
-          // for pushing data to dropdown
-          // tslint:disable-next-line: prefer-for-of
-          for (let i = 0; i < res.data.length; i++) {
-            this.familyMemberList.push({ user_id: res.data[i].user_id, name: res.data[i].PFirstName + ' ' + res.data[i].PLastName });
+            // for pushing data to dropdown
+            // tslint:disable-next-line: prefer-for-of
+            for (let i = 0; i < res.data.length; i++) {
+              this.familyMemberList.push({ user_id: res.data[i].user_id, name: res.data[i].PFirstName + ' ' + res.data[i].PLastName });
+            }
           }
-        }
         },
           (err: any) => {
             setTimeout(() => {
@@ -236,6 +242,7 @@ export class HomeCollectionComponent implements OnInit {
     const ServiceData = { RBAuthKey: 'RBDWAh!Q1s74e', Center_ID: '', search_key: '' };
     this.rbservice.postService('RBD/Service', ServiceData)
       .subscribe((res: any) => {
+        console.log(res);
         this.testData = res.data;
       });
   }
@@ -247,9 +254,6 @@ export class HomeCollectionComponent implements OnInit {
       this.serviceArr.push(id);
       this.serviceNameArr.push(name);
       this.price += priceT;
-      document.getElementById('colCBox_' + i).classList.add('bgC');
-      document.getElementById('colC_' + i).classList.add('bgC');
-      document.getElementById('colCB_' + i).classList.add('bgC');
     } else {
       const index = this.serviceArr.indexOf(id);
       const index1 = this.serviceNameArr.indexOf(name);
@@ -257,9 +261,6 @@ export class HomeCollectionComponent implements OnInit {
       if (index > -1 && index1 > -1) {
         this.serviceArr.splice(index, 1);
         this.serviceNameArr.splice(index1, 1);
-        document.getElementById('colC_' + i).classList.remove('bgC');
-        document.getElementById('colCB_' + i).classList.remove('bgC');
-        document.getElementById('colCBox_' + i).classList.remove('bgC');
       }
     }
     this.homeColform.controls.services_list.setValue((this.serviceArr).toString());
@@ -303,7 +304,7 @@ export class HomeCollectionComponent implements OnInit {
                   this.appointmentId = resp.appointment_id;
                   this.patientName = this.homeColform.controls.FName.value + ' ' + this.homeColform.controls.LName.value;
                   this.appointmentTime = this.homeColform.controls.Rtime.value + ' ' + 'to' + ' ' +
-                   this.homeColform.controls.APPToTime.value;
+                    this.homeColform.controls.APPToTime.value;
                   this.appointmentDate = this.homeColform.controls.Rdate.value;
                   this.locationofPatioent = this.homeColform.controls.Address.value + ' ' + this.homeColform.controls.ZipCode.value;
                   this.rbservice.removeClass();
@@ -338,7 +339,7 @@ export class HomeCollectionComponent implements OnInit {
     this.modalService.dismissAll();
   }
   // for setting default value
-  formDefaultValueSet(): any{
+  formDefaultValueSet(): any {
     this.homeColform.controls.RBAuthKey.setValue('RBDWAh!Q1s74e');
     this.homeColform.controls.Status.setValue('B');
     this.homeColform.controls.channel.setValue('W');
@@ -346,5 +347,28 @@ export class HomeCollectionComponent implements OnInit {
     this.homeColform.controls.COVIDSample.setValue('N');
     this.homeColform.controls.Center_ID.setValue('1');
     this.homeColform.controls.appointment_id.setValue('0');
+  }
+  // for showing package test
+  detailsPackage(data: any, PackageTestContent): any {
+    this.rbservice.addClass();
+    const packageData = {
+      RBAuthKey: 'RBDWAh!Q1s74e',
+      service_id: data.service_id
+    };
+    this.rbservice.postService('RBD/PackageDetail', packageData)
+      .subscribe((res: any) => {
+        this.rbservice.removeClass();
+        console.log(res);
+        this.packageReqDAta = res.data;
+        setTimeout(() => {
+          this.modalService.open(PackageTestContent, { centered: true, scrollable: true , size: 'md' });
+        }, 300);
+      },
+        (res: any) => {
+          setTimeout(() => {
+            this.rbservice.removeClass();
+          }, 4000);
+        });
+
   }
 }

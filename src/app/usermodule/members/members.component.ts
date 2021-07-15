@@ -11,6 +11,7 @@ export class MembersComponent implements OnInit {
   familyMemberList: any = [];
   patientData: any;
   constructor(private rbservice: RbService, private router: Router) {
+    // tslint:disable-next-line:no-unused-expression
     rbservice.patientData;
   }
 
@@ -46,6 +47,7 @@ export class MembersComponent implements OnInit {
         this.rbservice.removeClass();
         // console.log(res);
         // for pushing data to dropdown
+        // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < res.data.length; i++) {
           this.familyMemberList.push({ user_id: res.data[i].user_id, name: res.data[i].PFirstName + ' ' + res.data[i].PLastName });
         }
@@ -58,6 +60,9 @@ export class MembersComponent implements OnInit {
   }
   // to show family member
   memberChange(id): any {
+    if (id === '') {
+      this.router.navigate(['/users/sidenav/add-member']);
+    }
     this.rbservice.addClass();
     const UserData = { RBAuthKey: 'RBDWAh!Q1s74e', user_id: id, mobile_no: '' };
     this.rbservice.postService('Patient/Profile', UserData)

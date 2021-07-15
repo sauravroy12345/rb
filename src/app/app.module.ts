@@ -32,6 +32,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ToastrModule } from 'ngx-toastr';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 // import { UsermoduleModule } from './usermodule/usermodule.module';
 
 @NgModule({
@@ -80,6 +81,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBXB8q439P9X9I3GhVvS2pUzUWYv0MWNHM'
+    })
   ],
   providers: [
     {

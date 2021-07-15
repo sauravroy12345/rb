@@ -53,6 +53,7 @@
     border-radius: 15px 15px 15px 15px;
     box-shadow: 0px 0px 30px 0px rgb(0 42 106 / 10%);
     height:150px;
+    cursor: pointer;
 }
 .feature-item h4 {
     color: #223a66;
@@ -137,11 +138,7 @@
 .section-title h2 {
     color: #223a66;
 }
-.divider {
-    width: 40px;
-    height: 5px;
-    background: #e12454;
-}
+
 .gray-bg {
     background: #f4f9fc;
 }

@@ -40,7 +40,7 @@ const routes: Routes = [
     component: PackagesListComponent
   },
   {
-    path: 'packages-details',
+    path: 'packages-details/:service_id',
     component: PackageDetailsComponent
   },
   {
@@ -49,6 +49,10 @@ const routes: Routes = [
   },
   {
     path: 'home-collection',
+    component: HomeCollectionComponent
+  },
+  {
+    path: 'home-collection/:service_id/:service_name/:price',
     component: HomeCollectionComponent
   },
   {

@@ -1,77 +1,27 @@
-<div class="service">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Services</h2>
-                    <div class="divider mx-auto my-4"></div>
-                    <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6" *ngFor="let item of serviceList">
-                <a (click)="detailsService(item)">
-                    <div class="service-box">
-                        <p class="heading">{{item.title}}</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="{{item.image}}" class="service-img">
-                            </div>
-                            <div class="col-md-6">
-                                <section innerHTML='{{item.description}}'></section>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- <div class="col-md-6">
-                <a routerLink="/service-cardiology">
-                    <div class="service-box">
-                        <p class="heading">Cardiology</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="assets/img/cardiology.jpg" class="service-img">
-                            </div>
-                            <div class="col-md-6">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <a routerLink="/service-neurology">
-                    <div class="service-box">
-                        <p class="heading">Neurology</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="assets/img/neurology.jpg" class="service-img">
-                            </div>
-                            <div class="col-md-6">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a routerLink="/service-pathology">
-                    <div class="service-box">
-                        <p class="heading">Pathology</p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="assets/img/pathology.jpg" class="service-img">
-                            </div>
-                            <div class="col-md-6">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
+<section class="services">
+    <div class="service-page">
+        <div class="section-title">
+            <h2>Services</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
     </div>
-</div>
+        <div class="service-box">
+            <div class="row">
+                <div class="col-md-6 mb" *ngFor="let item of serviceList">
+                    <a (click)="detailsService(item)">
+                        <div class="services-box">
+                            <p class="heading">{{item.title}}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="{{item.image}}" class="service-img">
+                                </div>
+                                <div class="col-md-6">
+                                    <section innerHTML='{{item.description}}'></section>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>   
+            </div> 
+        </div>
+</section>

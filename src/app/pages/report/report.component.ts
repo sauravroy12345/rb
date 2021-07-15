@@ -15,13 +15,16 @@ export class ReportComponent implements OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   // dataSource = ELEMENT_DATA;
   dataReport: any = [];
+  finacialYear: any = [];
   constructor(private fb: FormBuilder, private rbservice: RbService) { }
   public reportForm = this.fb.group({
     first: ['', [Validators.required, Validators.pattern('[A-Z]{2}')]],
     secondDigit: ['', [Validators.required, Validators.pattern('^(3[01]|[12][0-9]|[1-9])$')]],
-    thirdDigit: ['', [Validators.required]]
+    thirdDigit: ['', [Validators.required]],
+    FYear: ['']
   });
   ngOnInit(): void {
+    this.finalCialYear();
   }
   get getControl(): any {
     return this.reportForm.controls;
@@ -32,7 +35,8 @@ export class ReportComponent implements OnInit {
     const data = {
       RBAuthKey: 'RBDWAh!Q1s74e',
       Bill_id: (this.reportForm.controls.first.value).toUpperCase() + this.reportForm.controls.secondDigit.value + '-' +
-        this.reportForm.controls.thirdDigit.value
+        this.reportForm.controls.thirdDigit.value,
+        FYear: this.reportForm.controls.FYear.value
     };
     this.rbservice.addClass();
     console.log(data);
@@ -45,4 +49,13 @@ export class ReportComponent implements OnInit {
         // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
       });
   }
+    // to get finalcial date
+    finalCialYear(): any {
+      const authdata = { RBAuthKey: 'RBDWAh!Q1s74e' };
+      this.rbservice.postService('RBD/FinancialYears', authdata)
+        .subscribe((res: any) => {
+          // console.log(res);
+          this.finacialYear = res.data;
+        });
+    }
 }

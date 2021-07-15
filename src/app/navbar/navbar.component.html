@@ -68,69 +68,9 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" routerLink="service" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
             Services
            </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li class="nav-item dropdown sub-menu-list">
-                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
-               Imaging
-              </a>
-                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
-                            <a class="nav-link" routerLink="service-imaging">X-Ray</a>
-                            <a class="nav-link" routerLink="service-imaging">USG</a>
-                            <a class="nav-link" routerLink="service-imaging">CT Scan</a>
-                            <a class="nav-link" routerLink="service-imaging">MRI</a>
-                            <a class="nav-link" routerLink="service-imaging">Dexa Scan</a>
-                            <a class="nav-link" routerLink="service-imaging">Mammography</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown sub-menu-list">
-                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
-               Cardiology
-              </a>
-                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
-                            <a class="nav-link" routerLink="service-cardiology">Electrocardiogram</a>
-                            <a class="nav-link" routerLink="service-cardiology">Echocardiogram</a>
-                            <a class="nav-link" routerLink="service-cardiology">Stress Test</a>
-                            <a class="nav-link" routerLink="service-cardiology">Holter Monitoring</a>
-                            <a class="nav-link" routerLink="service-cardiology">Color Doppler</a>
-                            <a class="nav-link" routerLink="service-cardiology">Peripheral</a>
-                            <a class="nav-link" routerLink="service-cardiology">Doppler PFT</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown sub-menu-list">
-                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
-               Neurology
-              </a>
-                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
-                            <a class="nav-link" routerLink="service-neurology">EEG</a>
-                            <a class="nav-link" routerLink="service-neurology">EMG</a>
-                            <a class="nav-link" routerLink="service-neurology">NCV</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown sub-menu-list">
-                        <a class="nav-link dropdown-toggle" routerLink="service" id="navbarDropdownMenuLink1" data-toggle="" aria-haspopup="true" aria-expanded="false">
-               Pathology
-              </a>
-                        <div class="dropdown-menu sub-menu" aria-labelledby="navbarDropdownMenuLink1">
-                            <a class="nav-link" routerLink="service-pathology">Hematology</a>
-                            <a class="nav-link" routerLink="service-pathology">Cytopathology</a>
-                            <a class="nav-link" routerLink="service-pathology">Microiology</a>
-                            <a class="nav-link" routerLink="service-pathology">Serology</a>
-                            <a class="nav-link" routerLink="service-pathology">Histopathology</a>
-                            <a class="nav-link" routerLink="service-pathology">Cliical Pathology</a>
-                            <a class="nav-link" routerLink="service-pathology">Biochemistry</a>
-                            <a class="nav-link" routerLink="service-pathology">Cytogenetics</a>
-                            <a class="nav-link" routerLink="service-pathology">Flow Cytometry</a>
-                            <a class="nav-link" routerLink="service-pathology">Mass Spectrometry(LC-MS/MS)</a>
-                        </div>
-                    </li>
-                </div>
-
-
-
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/pages/doctor-list']" routerLinkActive="router-link-active">OPD</a>
@@ -171,13 +111,23 @@
                 <li class="nav-item">
                     <a class="nav-link">Covid Test Booking</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" *ngIf="nameOfUser === undefined">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
              My Account
             </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="nav-link" [routerLink]="['/users/login']" routerLinkActive="router-link-active">Login</a>
                         <a class="nav-link" [routerLink]="['/users']" routerLinkActive="router-link-active">Register</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown" *ngIf="nameOfUser !== undefined">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="" aria-haspopup="true" aria-expanded="false">
+             {{nameOfUser}}
+            </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="nav-link" [routerLink]="['/users/login']" routerLinkActive="router-link-active">View</a>
+                        <a class="nav-link" (click)="logout()" routerLinkActive="router-link-active">Logout</a>
                     </div>
                 </li>
             </div>

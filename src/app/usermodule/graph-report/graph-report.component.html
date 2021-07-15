@@ -13,11 +13,13 @@
         <div class="form_wrapper">
             <div class="select">
                 <select class="select-text" required (change)="memberChange($event.target.value)" onload="">
-                <option value=""></option>
-            <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}" [selected]="i == 0">{{item.name}}</option>
-            </select>
+                    <option value=""></option>
+                    <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}"
+                        [selected]="i == 0">{{item.name}}</option>
+                </select>
                 <label class="select-label">Select Patient Name</label>
             </div>
+
         </div>
         <div class="graphReportClass" *ngIf="graphReportData.length === 0">
             <h3>No Records Found</h3>

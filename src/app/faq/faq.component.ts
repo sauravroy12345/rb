@@ -18,7 +18,7 @@ export class FaqComponent implements OnInit {
     this.rbservice.postService('getFaq', '')
       .subscribe((res: any) => {
         console.log(res);
-        this.faqArray = res.data;
+        this.faqArray = res.userdata;
       });
   }
 }

@@ -1,19 +1,16 @@
-.labl {
-    width: 40%;
+.labl{
+    width:40%;
     color: #000;
     font-weight: 500;
     font-size: 16px;
 }
-
-.coln {
-    width: 10%;
+.coln{
+    width:10%;
     color: #000;
 }
-
-.desc {
-    width: 40%;
+.desc{
+    width:40%;
 }
-
 .full-labl {
     width: 19%;
     color: #000;
@@ -41,4 +38,8 @@
     width: calc(100% - 24px);
     border: none;
     border-radius: 10px;
+}
+
+.finalCial {
+    margin-top: 20px;
 }

@@ -65,6 +65,17 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- finalcial year  -->
+                        <div class="select">
+                            <select class="select-text" formControlName="FYear" >
+                                <option value=""></option>
+                                <option *ngFor="let item of finacialYear; let i = index" value="{{item.FYear}}" [selected]="i == 0"> {{item.FYear}} </option>
+                            </select>
+                        <label class="select-label"> Financial Year</label>
+                        </div>
+                        <!-- end  -->
+
                     </form>
                 </div>
             </div>
