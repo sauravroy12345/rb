@@ -33,7 +33,7 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'service-imaging/:Id/:title',
+        path: 'services/:title',
         component: ServiceImagingComponent
       },
       {
@@ -49,7 +49,7 @@ const routes: Routes = [
         component: ServicePathologyComponent
       },
       {
-        path: 'service',
+        path: 'services',
         component: ServiceComponent
       },
       {
@@ -85,7 +85,7 @@ const routes: Routes = [
         component: AppointmentComponent
       },
       {
-        path: 'changePass',
+        path: 'change-password/:id',
         component: ChangePasswordComponent
       },
       {

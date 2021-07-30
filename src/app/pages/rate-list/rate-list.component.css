@@ -1,34 +1,38 @@
-.labl {
-    width: 40%;
-    color: #000;
-    font-weight: 500;
-    font-size: 16px;
+
+.label{
+    font-weight: bold;
+    font-size:14px;
+}
+.colon{
+    text-align: right;
+}
+.view-report{
+    color:#689F38;
+    position: relative;
+    right: -42px;
+}
+.search{
+    background:#689F38!important;
+    margin-right: 10px;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    padding: 0px 25px;
+    float: right
 }
 
-.coln {
-    width: 10%;
-    color: #000;
+.view{
+    background:#689F38!important;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    /* width: 100%; */
+    padding: 0px 25px; 
+    width: 100%;
 }
 
-.desc {
-    width: 40%;
-}
 
-.full-labl {
-    width: 19%;
-    color: #000;
-    font-weight: 500;
-}
-
-.full-coln {
-    width: 5%;
-    color: #000;
-}
-
-.full-desc {
-    width: 76%;
-}
-
-.description {
-    cursor: pointer;
+.patient-report-box {
+    height: 230px;
+    margin-bottom: 0px;
 }

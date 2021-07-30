@@ -1,168 +1,141 @@
-<!-- <div class="row">
-    <div class="col-md-12">
-        <p class="welcome">My Account</p>
-    </div>
-</div> -->
-<div class="col-md-12">
-    <div class="section-title">
-        <h2>My Account</h2>
-        <div class="divider mx-auto my-4"></div>
-    </div>
-</div>
-<div class="form_wrapper">
-    <!-- <div class="row">
-        <div class="col-md-8">
-            <div class="select">
-                <select class="select-text"  d="" required>
-                    <option value="" disabled selected></option>
-                    <option value="1">SR</option>
-                    <option value="2">RS</option>
-                </select>
-                <label class="select-label">Select</label>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <a href="javascript:void(0)" [routerLink]="['/users']" routerLinkActive="router-link-active">
-            <p class="add-mem"><mat-icon aria-hidden="false" class="add-icon">add_circle</mat-icon> Add New Member</p>
-            </a>
-        </div>
-    </div> -->
-    <div class="row" style="margin-top:10px;">
-        <div class="col-md-12">
-            <div class="user d-flex">
-                <div class="full-labl">
-                    <label>Name</label>
-                </div>
-                <div class="full-coln">
-                    <label>:</label>
-                </div>
-                <div class="full-desc">
-                    <label>{{patientData?.PFirstName}} {{patientData?.PLastName}}</label>
-                </div>
-            </div>
+<section class="account">
+    <div class="account-page">
+        <div class="section-title">
+            <h2>My Account</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>Contact No.</label>
+        <div class="account-box col-md-11">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="user d-flex">
+                        <div class="full-labl">
+                            <label>Name</label>
+                        </div>
+                        <div class="full-coln">
+                            <label>:</label>
+                        </div>
+                        <div class="full-desc">
+                            <label>{{patientData?.PFirstName}} {{patientData?.PLastName}}</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="coln">
-                    <label>:</label>
+                <div class="col-md-4">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Contact No.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="patientData?.mobile_no === '' ">N/A</label>
+                            <label *ngIf="patientData?.mobile_no !== '' ">{{patientData?.mobile_no}}</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.mobile_no === '' ">N/A</label>
-                    <label *ngIf="patientData?.mobile_no !== '' ">{{patientData?.mobile_no}}</label>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>Alt Contact No.</label>
-                </div>
-                <div class="coln">
-                    <label>:</label>
-                </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.alt_mobile_no === '' ">N/A</label>
-                    <label *ngIf="patientData?.alt_mobile_no !== '' ">{{patientData?.alt_mobile_no}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="user d-flex">
-                <div class="full-labl">
-                    <label>Email-ID</label>
-                </div>
-                <div class="full-coln">
-                    <label>:</label>
-                </div>
-                <div class="full-desc">
-                    <label *ngIf="patientData?.email === '' ">N/A</label>
-                    <label *ngIf="patientData?.email !== '' ">{{patientData?.email}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>D.O.B</label>
-                </div>
-                <div class="coln">
-                    <label>:</label>
-                </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.dateofbirth === '' ">N/A</label>
-                    <label *ngIf="patientData?.dateofbirth !== '' ">{{patientData?.dateofbirth}}</label>
+                <div class="col-md-4">
+                    <div class="user d-flex">
+                        <div class="labl">
+                            <label>Alt Contact No.</label>
+                        </div>
+                        <div class="coln">
+                            <label>:</label>
+                        </div>
+                        <div class="desc">
+                            <label *ngIf="patientData?.alt_mobile_no === '' ">N/A</label>
+                            <label *ngIf="patientData?.alt_mobile_no !== '' ">{{patientData?.alt_mobile_no}}</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>Gender</label>
-                </div>
-                <div class="coln">
-                    <label>:</label>
-                </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.PSex === 'M' ">Male</label>
-                    <label *ngIf="patientData?.PSex === 'F' ">Female</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="user d-flex">
-                <div class="full-labl">
-                    <label>Address</label>
-                </div>
-                <div class="full-coln">
-                    <label>:</label>
-                </div>
-                <div class="full-desc">
-                    <label *ngIf="patientData?.address === '' ">N/A</label>
-                    <label *ngIf="patientData?.address !== '' ">{{patientData?.address}}</label>
+           <div class="row">
+            <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="full-labl">
+                        <label>Email-ID</label>
+                    </div>
+                    <div class="full-coln">
+                        <label>:</label>
+                    </div>
+                    <div class="full-desc">
+                        <label *ngIf="patientData?.email === '' ">N/A</label>
+                        <label *ngIf="patientData?.email !== '' ">{{patientData?.email}}</label>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>Landmark</label>
-                </div>
-                <div class="coln">
-                    <label>:</label>
-                </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.landmark === '' ">N/A</label>
-                    <label *ngIf="patientData?.landmark !== '' ">{{patientData?.landmark}}</label>
+            <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="labl">
+                        <label>D.O.B</label>
+                    </div>
+                    <div class="coln">
+                        <label>:</label>
+                    </div>
+                    <div class="desc">
+                        <label *ngIf="patientData?.dateofbirth === '' ">N/A</label>
+                        <label *ngIf="patientData?.dateofbirth !== '' ">{{patientData?.dateofbirth}}</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="user d-flex">
-                <div class="labl">
-                    <label>Zipcode</label>
-                </div>
-                <div class="coln">
-                    <label>:</label>
-                </div>
-                <div class="desc">
-                    <label *ngIf="patientData?.Zipcode === '' ">N/A</label>
-                    <label *ngIf="patientData?.Zipcode !== '' ">{{patientData?.Zipcode}}</label>
+            <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="labl">
+                        <label>Gender</label>
+                    </div>
+                    <div class="coln">
+                        <label>:</label>
+                    </div>
+                    <div class="desc">
+                        <label *ngIf="patientData?.PSex === 'M' ">Male</label>
+                        <label *ngIf="patientData?.PSex === 'F' ">Female</label>
+                    </div>
                 </div>
             </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="full-labl">
+                        <label>Address</label>
+                    </div>
+                    <div class="full-coln">
+                        <label>:</label>
+                    </div>
+                    <div class="full-desc">
+                        <label *ngIf="patientData?.address === '' ">N/A</label>
+                        <label *ngIf="patientData?.address !== '' ">{{patientData?.address}}</label>
+                    </div>
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="labl">
+                        <label>Landmark</label>
+                    </div>
+                    <div class="coln">
+                        <label>:</label>
+                    </div>
+                    <div class="desc">
+                        <label *ngIf="patientData?.landmark === '' ">N/A</label>
+                        <label *ngIf="patientData?.landmark !== '' ">{{patientData?.landmark}}</label>
+                    </div>
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="user d-flex">
+                    <div class="labl">
+                        <label>Zipcode</label>
+                    </div>
+                    <div class="coln">
+                        <label>:</label>
+                    </div>
+                    <div class="desc">
+                        <label *ngIf="patientData?.Zipcode === '' ">N/A</label>
+                        <label *ngIf="patientData?.Zipcode !== '' ">{{patientData?.Zipcode}}</label>
+                    </div>
+                </div>
+               </div>
+           </div>
         </div>
-    </div>
-</div>
+</section>

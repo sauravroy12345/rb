@@ -1,8 +1,18 @@
-/* .login {
-    width: 50%;
-    border: 1px solid rgb(82, 76, 76);
-    padding: 10px 15px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-} */
+.buttons{
+    background:#689F38!important;
+    /* margin-right: 10px; */
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    width:100%;
+  }
+
+a {
+    cursor: pointer;
+    color: #689F38;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+.passW {
+    padding-top: 3px;
+}

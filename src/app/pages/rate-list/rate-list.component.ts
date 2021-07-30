@@ -54,6 +54,9 @@ export class RateListComponent implements OnInit {
         }, 5000);
       });
   }
+  book(data: any): any {
+    this.router.navigate(['/pages/home-collection/' + btoa(JSON.stringify(data))]);
+  }
   des(): any {
     this.desBox = true;
   }

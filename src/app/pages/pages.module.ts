@@ -22,7 +22,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RateListComponent } from './rate-list/rate-list.component';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AgmCoreModule } from '@agm/core';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -52,9 +58,19 @@ import { RateListComponent } from './rate-list/rate-list.component';
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatTooltipModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBXB8q439P9X9I3GhVvS2pUzUWYv0MWNHM',
+      libraries: ['places']
+    })
   ],
-  exports: [DoctorListComponent, ReportComponent],
-  providers: [DatePipe]
+  exports: [DoctorListComponent, ReportComponent, HomeCollectionComponent],
+  providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }]
 })
 export class PagesModule { }

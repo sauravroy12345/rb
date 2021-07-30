@@ -2,6 +2,9 @@ html,
 body {
     height: 100%;
 }
+html {
+    scroll-behavior: smooth;
+  }
 
 body {
     margin: 0;
@@ -15,7 +18,8 @@ body {
 }
 
 a {
-    color: #000;
+    cursor: pointer;
+    color: #689F38;
     text-decoration: none;
 }
 
@@ -27,7 +31,7 @@ a:hover {
 .header-top-bar {
     width: 100%;
     position: relative;
-    background-color: #2d9436;
+    background-color: #fff;
 }
 
 .login-radio {
@@ -49,7 +53,7 @@ a:hover {
     max-width: 100%;
     box-sizing: border-box;
     padding: 15px 5px;
-    margin: 3% auto 3%;
+    margin: 0% auto 3%;
     position: relative;
     z-index: 1;
     /* box-shadow: 0 23px 4px -21px rgb(0 0 0 / 90%); */
@@ -70,7 +74,7 @@ a:hover {
 
 .material input {
     /* font-size: 18px; */
-    padding: 12px 12px 7px;
+    padding: 12px 8px 7px;
     display: block;
     width: calc(100% - 24px);
     border: none;
@@ -88,17 +92,17 @@ a:hover {
 .material input:valid~label {
     top: -7px;
     font-size: 12px;
-    color: #2d9436;
+    color: #689F38;
     background: #fff;
     padding: 0px 5px;
 }
 
 .material input:focus~.borda {
-    border: 2px solid #2d9436;
+    border: 2px solid #689F38;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
-    border-radius: 3px;
+    border-radius: 5px;
     position: absolute;
     width: calc( 100% - 2px);
     height: calc( 100% - 2px);
@@ -151,7 +155,7 @@ a:hover {
 .material-textarea textarea:valid~label {
     top: -7px;
     font-size: 13px;
-    color: #2d9436;
+    color: #689F38;
     background: #fff;
     padding: 0px 5px;
 }
@@ -163,7 +167,7 @@ a:hover {
 .material-textarea textarea:focus~.borda,
 .material-textarea textarea:active~.borda,
 .material-textarea textarea:valid~.borda {
-    border: 2px solid #2d9436;
+    border: 2px solid #689F38;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
@@ -182,7 +186,7 @@ a:hover {
 
 .material-textarea label {
     color: #999;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -216,9 +220,56 @@ a:hover {
     position: absolute;
     top: 23%;
     right: 5%;
-    color: #2d9436;
+    color: #689F38;
 } */
-
+/* materia input radio css */
+.radio {
+    position: relative;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 14px;
+    margin: 12px  12px 12px 0px;
+    color:#8c8888
+  }
+  .radio .label {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c8ccd4;
+    border-radius: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .radio .label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #28a745;
+    transform: scale(0);
+    transition: all 0.2s ease;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .radio:hover .label:after {
+    transform: scale(3.6);
+  }
+  input[type="radio"]:checked + .label {
+    border-color: #28a745;
+  }
+  input[type="radio"]:checked + .label:after {
+    transform: scale(1);
+    transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+    opacity: 1;
+  }
+  .hidden {
+    display: none;
+  }
 
 /* for nav modification */
 
@@ -229,7 +280,7 @@ a:hover {
     z-index: 1;
     top: 0;
     left: 0;
-    /* background-color: #2d9436; */
+    /* background-color: #689F38; */
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -280,7 +331,7 @@ a:hover {
 
 .select-text:focus {
     outline: none;
-    border: 1px solid #2d9436;
+    border: 1px solid #689F38;
 }
 
 
@@ -289,7 +340,7 @@ a:hover {
 .select .select-text {
     appearance: none;
     -webkit-appearance: none;
-    color: #ccc;
+    color: #8c8888;
     height: 40px;
 }
 
@@ -304,7 +355,7 @@ a:hover {
     content: '';
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid #ccc;
+    border-top: 6px solid #8c8888;
     pointer-events: none;
 }
 
@@ -328,8 +379,9 @@ a:hover {
 /* active state */
 
 .select-text:focus~.select-label,
-.select-text:valid~.select-label {
-    color: #2d9436;
+.select-text:valid~.select-label 
+{
+    color: #689F38;
     top: -8px;
     transition: 0.2s ease all;
     font-size: 14px;
@@ -352,9 +404,7 @@ a:hover {
     margin-left: 8px;
 }
 
-.service {
-    padding: 50px 0px;
-}
+
 
 .mat-expansion-panel {
     box-shadow: 0 1px 10px -1px rgb(0 0 0 / 20%)!important;
@@ -362,22 +412,24 @@ a:hover {
 
 .mat-expansion-panel-header-title,
 .mat-expansion-panel-header-description {
-    color: #2d9436!important;
+    color: #689F38!important;
     font-weight: 600!important;
 }
 
 
 /* .mat-expansion-panel-header:not([aria-disabled=true]) {
-   background: #2d9436;
+   background: #689F38;
 } */
 
 .mat-expansion-indicator::after {
-    color: #2d9436;
+    color: #689F38;
     font-weight: 600;
 }
 
 .service-img {
     width: 100%;
+    border: none;
+    border-radius: 10px;
 }
 
 .heading {
@@ -413,30 +465,35 @@ a:hover {
     position: relative;
     top: 3px;
     left: 6px;
-    color: #2d9436;
+    color: #689F38;
 }
 
 .service-page {
     background-color: #f4f9fc;
 }
 
-.service-box,
-.doctor-box {
+.services-box,
+.doctor-box, .management-team-box, .inhouse-doctor-box, .doctor-detail-box, .packages-box, .patient-report-box{
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 1px 10px -1px rgb(0 0 0 / 20%);
     background: #fff;
-    font-size: 15px;
-    margin-bottom: 30px;
-    height: 250px;
+    font-size: 13px;
+    /* margin-bottom: 30px; */
+    height: 100%;
+    color: #000;
+    
+}
+.box{
+    padding: 0px 8px;
+}
+.heading {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #689F38;
 }
 
-.heading {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #2d9436;
-}
 
 
 /*after login page css  */
@@ -445,31 +502,34 @@ a:hover {
     margin: 10px 0px 20px 0px;
     background-color: #f4f9fc;
 }
-
-
-/* about page css */
-
+.divider {
+    width: 40px;
+    height: 5px;
+    background: #e12454;
+}
 .section-title {
     text-align: center;
     margin-bottom: 0px;
     padding: 10px;
 }
 
-.about-page {
+.about-page, .service-page, .center-page, .quality-page, .faq-page, .b2b-page, .contact-page, .appointment-page, .doctor-profile-page, .package-page, .home-collection-page, .report-page, .account-page, .opd-page, .lab-page, .member-page, .login-page, .registration-page{
     background-color: #f4f9fc;
-    margin: 40px 0px;
-    height: 150px;
+    /* margin: 40px 0px; */
+    height: 160px;
 }
 
-.about-us {
+.about-us, .services, .center, .quality, .faq, .b2b, .contact, .appointment, .doctor-profile, .package, .home-collection, .report, .account, .opd, .lab, .member, .registration{
     position: relative;
+    min-height: 500px;
 }
 
-.about-box {
+.about-box, .service-box, .center-cont-box, .quality-box, .faq-box, .b2b-box, .contact-box, .appointment-box, .doctor-profile-box, .package-box, .home-collection-box, .report-box, .account-box, .opd-box, .lab-box, .member-box, .login-box, .registration-box{
     position: relative;
-    margin-top: -90px;
+    margin-top: -55px;
     background: #fff;
-    width: 1200px;
+    /* width: 1200px; */
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -477,7 +537,7 @@ a:hover {
     box-shadow: 0 1px 10px -1px rgb(0 0 0 / 20%);
     border: none;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .reportClass {
@@ -528,7 +588,7 @@ a:hover {
 .about-titl {
     font-size: 20px;
     font-weight: 600;
-    color: #2d9436;
+    color: #689F38;
 }
 
 .video iframe {
@@ -713,16 +773,16 @@ a:hover {
 /* opd page css */
 
 .doctor {
-    width: 90px;
+    width: 70px;
     margin: 0px auto;
-    border: 1px solid #2d9436;
+    border: 1px solid #689F38;
     border-radius: 100%;
     padding: 3px;
     display: block;
 }
 
 .profile {
-    background: #2d9436;
+    background: #689F38;
     margin-right: 10px!important;
     border: none;
     color: #fff;
@@ -735,16 +795,7 @@ a:hover {
 
 /* contact page css */
 
-.contact {
-    padding: 50px 0px 0px;
-}
 
-.contactInner .mat-icon {
-    position: relative;
-    top: 4px;
-    font-size: 20px;
-    left: -1px;
-}
 
 .contact_right_side {
     color: #000;
@@ -813,8 +864,8 @@ a:hover {
 /* CM SPINNER */
 
 .cm-spinner {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border: 3px solid transparent;
     border-radius: 50%;
     border-top: 4px solid #f15e41;
@@ -908,3 +959,159 @@ a:hover {
         flex: 0 0 100%;
     }
 }
+.mb{
+    margin-bottom: 15px;
+}
+.validation{
+    color: #dc3545;
+    font-size: 13px;
+}
+.req {
+    color: #dc3545;
+    font-size: 8px!important;
+    vertical-align: text-top;
+    margin-left: -3px;
+  }
+/* datepicker */
+input.date {
+    padding: 15px 20px;
+    border: 0;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .dtp {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.6s all;
+  }
+  
+  .dtp.hidden {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .dtp-header,
+  .dtp-actual-num,
+  .dtp-picker-month,
+  .dtp-buttons {
+    display: none;
+  }
+  
+  .dtp div.dtp-picker {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dtp table.dtp-picker-days tr>th {
+    font-weight: 400;
+    color: #ccc;
+  }
+  /* for designing modal */
+  .modal-header{
+    padding: 7px 15px!important;
+  }
+  .modal-title {
+    color: #689F38;
+}
+/* scrollbar css */
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #689F38; 
+  }
+  .fixed-height {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 15px;
+    height: 32px;
+    white-space: pre;
+}
+  /*collapsed  */
+  .test{
+    width: 100%;
+    margin-bottom: 5px;
+    float: left;
+  }
+  .overflow-tip {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+  .overflow-tip:active, .overflow-tip:hover {
+    overflow-x: visible;
+  }
+  .overflow-tip:active span, .overflow-tip:hover span {
+    position: relative;
+    background-color: #689F38;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 3px;
+    margin-left: -4px;
+  }
+  .test span {
+    z-index: 99999;
+}
+/* date css */
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0px!important;
+}
+.mat-form-field-wrapper{
+    padding-bottom: 0px!important;
+}
+.mat-form-field-flex.ng-tns-c123-0 {
+    height: 48px!important;
+}
+.mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1.3em;
+}
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+    top: 1.8em;
+    color: #689F38;
+}
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 8px 0px!important;
+}
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon, .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-datepicker-toggle-default-icon{
+    color: #689F38;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #689F38;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #689F38;
+    
+}
+.mat-input-element {
+    color: #689F38!important;
+}
+.mat-form-field{
+    width: 100%!important;
+}
+.mat-raised-button:hover{
+    background-color: #223a66;
+} 
+.mat-raised-button{
+    padding: 0px!important;
+    font-size: 12px;
+    line-height: 32px!important;
+    
+}
+/* .col-md-2{
+    padding-left: 8px;
+    padding-right: 8px;
+} */

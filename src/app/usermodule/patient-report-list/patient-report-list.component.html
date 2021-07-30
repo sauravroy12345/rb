@@ -1,75 +1,188 @@
-<section class="service-page">
-    <div class="container">
-        <div class="contact">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2>Past Report</h2>
-                    </div>
-                </div>
-            </div>
+<section class="report">
+    <div class="report-page">
+        <div class="section-title">
+            <h2>Past Report</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
-
-        <div class="form_wrapper">
-            <form [formGroup]="pastReport">
-                <div class="select">
-                    <select class="select-text" required (change)="memberChange($event.target.value)" onload="" formControlName="user_id">
-                <option value=""></option>
-            <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}" [selected]="i == 0">{{item.name}}</option>
-            </select>
-                    <label class="select-label">Select Patient Name</label>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="material">
-                            <input type="date" required [max]="maxDate" [min]="minDate" formControlName="From_date" onkeydown="return false">
-                            <span class="borda"></span>
-                            <!-- <label>From Date</label> -->
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="material">
-                            <input type="date" required [max]="maxDate1" [min]="minDate1" formControlName="To_date" onkeydown="return false">
-                            <span class="borda"></span>
-                            <!-- <label>To Date</label> -->
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="graphReportClass" *ngIf="patientPastReportArr.length === 0">
-            <h3>No Records Found</h3>
-        </div>
-        <div class="graphReportClass download" *ngFor="let item of patientPastReportArr">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="{{item.report_image_url_print}}" target="_blank">
-                        <div class="row" style="margin-top:10px;">
-                            <div class="col-md-11">
-                                <div class="user d-flex">
-                                    <div class="full-labl">
-                                        <label>Test Name</label>
-                                    </div>
-                                    <div class="full-coln">
-                                        <label>:</label>
-                                    </div>
-                                    <div class="full-desc">
-                                        <label> </label>
-                                    </div>
-                                </div>
+    </div>
+        <div class="col-md-11 report-box">
+            <div class="report-generate">
+                <form [formGroup]="pastReport">
+                    <div class="row mb">
+                        <div class="col-md-3">
+                            <!-- <div class="material">
+                                <input type="text" required [max]="maxDate" [min]="minDate" formControlName="From_date" onkeydown="return false" onfocus="(this.type='date')" onfocusout="(this.type='text')">
+                                <span class="borda"></span>
+                                <label>From Date</label>
+                            </div> -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>From Date <i class="fa fa-star req" aria-hidden="true"></i></mat-label>
+                                <input matInput [matDatepicker]="picker1" onkeydown="return false" formControlName="From_date" [max]="maxDate" [min]="minDate" (focus)="picker1.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                            <div *ngIf="getControl.From_date.touched && getControl.From_date.invalid" class="text-danger">
+                                <div *ngIf="getControl.From_date.errors.required">From date is required.</div>
                             </div>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-1">
-                    <mat-icon class="material-icons-outlined">
-                        arrow_forward_ios
-                    </mat-icon>
+                        <div class="col-md-3">
+                            <!-- <div class="material">
+                                <input type="text" required [max]="maxDate1" [min]="minDate1" formControlName="To_date" onkeydown="return false" onfocus="(this.type='date')" onfocusout="(this.type='text')">
+                                <span class="borda"></span>
+                                <label>To Date</label>
+                            </div> -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>From Date <i class="fa fa-star req" aria-hidden="true"></i></mat-label>
+                                <input matInput [matDatepicker]="picker2" onkeydown="return false" formControlName="To_date" [max]="maxDate1" [min]="minDate1" (focus)="picker1.open()">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                            <div *ngIf="getControl.To_date.touched && getControl.To_date.invalid" class="text-danger">
+                                <div *ngIf="getControl.To_date.errors.required">To date is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="select">
+                                <select class="select-text" formControlName="FYear" (click)="finalcialYearEvent($event.target)">
+                                    <option value="">Select Year</option>
+                                    <option *ngFor="let item of finacialYear; let i = index" value="{{item.FYear}}" [selected]="i == 0"> {{item.FYear}} </option>
+                                </select>
+                            <label class="select-label"> Financial Year</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="select">
+                                <select class="select-text" required (change)="memberChange($event.target.value)" onload="" formControlName="user_id">
+                                    <option value=""></option>
+                                    <option *ngFor="let item of familyMemberList ; let i = index" value="{{item.user_id}}" [selected]="i == 0">{{item.name}}</option>
+                                </select>
+                                <label class="select-label"> Patient Name</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12 text-center" *ngIf="patientPastReportArr.length === 0">
+               <p>No Records Found</p>
+            </div>
+            <div class="row mb">
+                <div class="col-md-12">
+                    <div *ngIf="patientPastReportArr.length !== 0">
+                        <div class="patient-report-box">
+                            <p class="heading">{{patientPastReportArr[0]?.PatientName}}</p>
+                            <p class="patient-email">{{patientPastReportArr[0]?.Email}}</p>
+                            <div class="row">
+                               <div class="col-md-12">
+                                   <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="label">Bill Id</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label class="colon">:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="desc">{{patientPastReportArr[0]?.BillID}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-4">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label class="label">Net Amt(Rs.)</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label class="colon">:</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="desc">{{patientPastReportArr[0]?.NetAmt}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row" *ngIf="patientPastReportArr[0].DueAmt !== '0.00'">
+                                            <div class="col-md-5">
+                                                <label class="label"> Due Amt</label>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <label class="colon">:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <label class="desc">{{item.DueAmt}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   </div>
+                               </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- <div class="row" >
+                <div class="col-md-3 col-sm-3 col-xs-6 mb" *ngFor="let item of patientPastReportArr">  
+                    <div class="patient-report-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="overflow-tip test"><span>{{item.TestName}}</span></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="label">Status:</label>
+                            </div>
+                            <div class="col-md-9">
+                                <label class="desc">{{item.ReportStatus}} </label>
+                        </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-md-12 mt-2" style="text-align: center;" *ngIf="item.ReportStatus === 'Completed' && item.DueAmt === '0.00'">
+                                    <a [href]="item.report_image_url" target="_blank"> <button mat-raised-button class="view">View Report</button></a>
+                            </div>
+                            <div class="col-md-12 mt-2" style="text-align: center;" *ngIf="item.ReportStatus === 'Pending'">
+                                      <button mat-raised-button class="view1" disabled>View Report</button>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+              
+            </div> -->
+            <table class="table table-striped tabl" *ngIf="patientPastReportArr.length !== 0">
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        <th>Status</th>
+                        <th>Image</th>
+                        <th>Report</th>
+                 </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of patientPastReportArr">
+                        <td> {{item.TestName}} </td>
+                        <td> {{item.ReportStatus}}  </td>
+                        <td></td>
+                        <td> <a [href]="item.report_image_url" target="_blank"
+                            *ngIf="item.ReportStatus === 'Completed' && item.DueAmt === '0.00'">
+                                <mat-icon matTooltip="View Report">picture_as_pdf</mat-icon>
+                            </a> <span *ngIf="item.ReportStatus === 'Pending'"> N/A </span> </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-    </div>
 </section>

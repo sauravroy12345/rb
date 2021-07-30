@@ -11,13 +11,14 @@ import { RbService } from 'src/app/rb.service';
 })
 export class LoginComponent implements OnInit {
   // loginForm: FormGroup;
+  submitted = false;
   constructor(private fb: FormBuilder, private router: Router, private rbservice: RbService, private toaster: ToastrService) {
     if (rbservice.loggedIn) {
       this.router.navigateByUrl('users/sidenav/user-dashboard/' + localStorage.getItem('id') );
     }
    }
   public loginForm = this.fb.group({
-    LoginType: ['', [Validators.required]],
+    LoginType: ['PT', [Validators.required]],
     mobile_no: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
     password: ['', [Validators.required]]
   });
@@ -28,6 +29,11 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   onLogin(): any {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+  }
     const loginData = {
       RBAuthKey: 'RBDWAh!Q1s74e',
       LoginType: this.loginForm.controls.LoginType.value,
@@ -35,7 +41,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value,
       deviceid: ''
     };
-    console.log(this.loginForm);
+    // console.log(this.loginForm);
     this.rbservice.postService('UserLogin', loginData)
       .subscribe((res: any) => {
         console.log(res);
@@ -48,6 +54,7 @@ export class LoginComponent implements OnInit {
       },
       (err: any) => {
         console.log(err);
+        this.toaster.error('Network Error');
       });
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RbService } from 'src/app/rb.service';
-
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -10,7 +9,7 @@ import { RbService } from 'src/app/rb.service';
 export class UserDashboardComponent implements OnInit {
   userIid: any;
   patientData: any;
-  constructor(private aroute: ActivatedRoute, private rbservice: RbService, private router: Router) { }
+  constructor(private aroute: ActivatedRoute, private rbservice: RbService, private router: Router) {   }
 
   ngOnInit(): void {
     this.aroute.params.subscribe(
@@ -18,10 +17,11 @@ export class UserDashboardComponent implements OnInit {
         this.userIid = atob(res.id);
       }
     );
-    if (atob(localStorage.getItem('id')) !== this.userIid) {
+    if (atob(localStorage.getItem('id')) === this.userIid) {
+      this.profileData();
+    } else {
       this.router.navigateByUrl('users/login');
     }
-    this.profileData();
   }
   profileData(): any {
     this.rbservice.addClass();
@@ -33,6 +33,7 @@ export class UserDashboardComponent implements OnInit {
         if (res.data !== null) {
           this.patientData = res.data[0];
           localStorage.setItem('patientData', JSON.stringify(res.data[0]));
+          this.rbservice.sendMessage(res.data[0].PFirstName + ' ' + res.data[0].PLastName);
         }
       },
         (err: any) => {

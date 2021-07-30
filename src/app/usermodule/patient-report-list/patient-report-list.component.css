@@ -1,44 +1,68 @@
-.labl {
-    width: 40%;
-    color: #000;
-    font-weight: 500;
-    font-size: 16px;
+
+.label{
+    font-weight: bold;
+    font-size:13px;
+}
+.colon{
+    text-align: right;
+}
+.view-report{
+    color:#689F38;
+    position: relative;
+    right: -42px;
+}
+.search{
+    background:#689F38!important;
+    margin-right: 10px;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    padding: 0px 25px;
+    float: right
+}
+.bill-id{
+    margin-top: 9px;
 }
 
-.coln {
-    width: 10%;
-    color: #000;
+.heading{
+    margin-bottom: 2px;
+}
+.patient-email{
+    text-align: center;
+    font-weight: bold;
 }
 
-.desc {
-    width: 40%;
+.patient-report-box {
+    height: 125px;
 }
-
-.full-labl {
-    width: 19%;
-    color: #000;
-    font-weight: 500;
+.view{
+    background:#689F38!important;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    /* width: 100%; */
+    padding: 0px 25px; 
+    width: 100%;
 }
-
-.full-coln {
-    width: 5%;
-    color: #000;
+.view1{
+    background:#c9c9c9!important;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    /* width: 100%; */
+    padding: 0px 25px; 
+    width: 100%;
 }
-
-.full-desc {
-    width: 76%;
+.tabl{
+    font-size: 12px;
 }
-
-.download {
-    cursor: pointer;
-}
-
-.material input {
-    margin-top: 20px;
-    /* font-size: 18px; */
-    padding: 12px 12px 7px;
-    display: block;
-    width: calc(100% - 24px);
-    border: none;
-    border-radius: 10px;
-}
+.tabl thead {
+    background-color: #689F38;
+    color: #FDFDFD;
+  }
+  .tabl tbody tr {
+    line-height: 20px;
+  }
+  .tabl thead tr {
+    line-height: 20px;
+  }

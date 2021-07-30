@@ -1,53 +1,55 @@
-<div class="doctorList">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2>Book Appointment</h2>
-                </div>
-            </div>
+<section class="appointment">
+    <div class="appointment-page">
+        <div class="section-title">
+            <h2>Book Appointment</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
-        <div class="row">
+    </div>
+    <div class="col-md-11 appointment-box">
+        <div class="row mb">
             <div class="col-md-12">
-                <div class="form_wrapper">
+                <div class="">
                     <!-- <form> -->
                     <div class="row">
                         <div class="col-md-2">
                             <!-- <select name="" id="" [(ngModel)]="centerId">
-                                    <option value="">Select Branches</option>
-                                    <option *ngFor="let item of branchist" value="{{item.center_id}}">{{item.center_name}}</option>
-                                </select> -->
+                                        <option value="">Select Branches</option>
+                                        <option *ngFor="let item of branchist" value="{{item.center_id}}">{{item.center_name}}</option>
+                                    </select> -->
                             <div class="select">
                                 <select class="select-text" required [(ngModel)]="centerId">
-                                        <option value=""></option>
-                                    <option *ngFor="let item of branchist" value="{{item.center_id}}">{{item.center_name}}</option>
-                                    </select>
+                                    <option value=""></option>
+                                    <option *ngFor="let item of branchist" value="{{item.center_id}}">
+                                        {{item.center_name}}</option>
+                                </select>
                                 <label class="select-label">Branch</label>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <!-- <select name="" id="" [(ngModel)]="areaId">
-                                    <option value="">Select Area</option>
-                                    <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}</option>
-                                </select> -->
+                                        <option value="">Select Area</option>
+                                        <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}</option>
+                                    </select> -->
                             <div class="select">
                                 <select class="select-text" required [(ngModel)]="areaId">
-                                        <option value="" disabled selected></option>
-                                        <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}</option>
-                                    </select>
+                                    <option value="" disabled selected></option>
+                                    <option *ngFor="let item of areaList" value="{{item.area_id}}">{{item.Area}}
+                                    </option>
+                                </select>
                                 <label class="select-label">Area</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- <select name="" id="" [(ngModel)]="specializationId">
-                                    <option value="">Select Department</option>
-                                    <option *ngFor="let item of DepartmentSpecialityList" value="{{item.specialization_id}}">{{item.specialization}}</option>
-                                </select> -->
+                                        <option value="">Select Department</option>
+                                        <option *ngFor="let item of DepartmentSpecialityList" value="{{item.specialization_id}}">{{item.specialization}}</option>
+                                    </select> -->
                             <div class="select">
                                 <select class="select-text" required [(ngModel)]="specializationId">
-                                        <option value="" disabled selected></option>
-                                        <option *ngFor="let item of DepartmentSpecialityList" value="{{item.specialization_id}}">{{item.specialization}}</option>
-                                    </select>
+                                    <option value="" disabled selected></option>
+                                    <option *ngFor="let item of DepartmentSpecialityList"
+                                        value="{{item.specialization_id}}">{{item.specialization}}</option>
+                                </select>
                                 <label class="select-label">Department</label>
                             </div>
                         </div>
@@ -59,11 +61,11 @@
                                 <label>Doctor Name</label>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label class="pure-material-checkbox">
-                                    <input type="checkbox">
-                                    <span>Home Collection</span>
-                                  </label>
+                                <input type="checkbox">
+                                <span>Home Collection</span>
+                            </label>
                         </div>
                     </div>
                     <div class="row">
@@ -78,228 +80,126 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4" *ngFor="let item of doctorList">
+            <div class="col-md-2 mb box" *ngFor="let item of doctorList">
                 <div class="doctor-box">
-                    <img *ngIf="item.DocPicture !== null" src="{{item.DocPicture}}" class="doctor" />
-                    <img *ngIf="item.DocPicture === null" src="../../../assets/img/demo.jpg" class="doctor" />
-                    <p class="heading">{{item.doctor_name}}</p>
+
+                    <!-- (click)="viewProfile(item)"  -->
+                    <a href="javascript:void(0)" (click)="open(content, item)"><img
+                            *ngIf="item.DocPicture !== 'null' && item.DocPicture" src="{{item.DocPicture}}"
+                            class="doctor" />
+                        <img *ngIf="item.DocPicture === 'null' || item.DocPicture === null"
+                            src="https://asiandhanbad.aimsindia.com/wp-content/uploads/2019/06/default-doctor.png"
+                            class="doctor" /><a href="javascript:void(0)" class="view-profile">View Profile</a>
+                        <p class="heading overflow-tip test"><span>{{item.doctor_name}}</span> </p>
+                    </a>
                     <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>business_center</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            {{item.specialization}}
+                        
+                        <div class="col-md-12">
+                            <p class="overflow-tip test text-center" *ngIf="item.specialization !== null && item.specialization !== 'null'"><span>{{item.specialization}}</span> </p>
+                            <p class="text-center" *ngIf="item.specialization === null || item.specialization === 'null'"> N/A </p>
                         </div>
                     </div>
+                   
+                 
                     <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>school</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            {{item.Designation}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>place</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            {{item.Area}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>payments</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            {{item.Fees}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-3" style="text-align:center">
-                            <!-- <a routerLink="/doctor-details"> -->
-                            <button mat-raised-button class="profile" (click)="viewProfile(item)">View Profile</button>
-                            <!-- </a> -->
-                            <a routerLink="/appointment"><button mat-raised-button class="profile">Book Appointment</button></a>
+                        <div class="col-md-12 mt-2" style="text-align: center;">
+                            <a routerLink="/appointment"><button mat-raised-button class="profile">Book
+                                    appointment</button></a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end -->
-            <!-- <div class="col-md-4">
-                <div class="doctor-box">
-                    <img src="assets/img/doctor.jpg" class="doctor"/>
-                    <p class="heading">Dr Anup Daga</p>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>business_center</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            Radiologist
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>school</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            CONSULTANT SONOLOGIST
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>place</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            Laketown
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>payments</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            01
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-3" style="text-align:center"> 
-                            <button mat-raised-button class="profile">View Profile</button>
-                            <button mat-raised-button class="profile">Book Appointment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="doctor-box">
-                    <img src="assets/img/doctor.jpg" class="doctor"/>
-                    <p class="heading">Dr. Anup Khetan</p>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>business_center</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            Cardiologist
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>school</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            MD DNB
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>place</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                           Topsia
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <mat-icon>payments</mat-icon>
-                        </div>
-                        <div class="col-md-10">
-                            900
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-3" style="text-align:center"> 
-                            <button mat-raised-button class="profile">View Profile</button>
-                            <button mat-raised-button class="profile">Book Appointment</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
-        <!-- <div class="form_wrapper">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="" height="100px" width="100px" alt="No Image">
-                </div>
-                <div class="col-md-5">
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <div class="full-labl">
-                                <label>Name</label>
-                            </div>
-                            <div class="full-coln">
-                                <label>:</label>
-                            </div>
-                            <div class="full-desc">
-                                <label>{{item.doctor_name}}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <div class="full-labl">
-                                <label>Specialization</label>
-                            </div>
-                            <div class="full-coln">
-                                <label>:</label>
-                            </div>
-                            <div class="full-desc">
-                                <label>{{item.specialization}}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <div class="full-labl">
-                                <label>Designation</label>
-                            </div>
-                            <div class="full-coln">
-                                <label>:</label>
-                            </div>
-                            <div class="full-desc">
-                                <label>{{item.Designation}}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <button class="btn btn-success" (click)="viewProfile(item.doctor_id)">View Profile</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <div class="full-labl">
-                                <label>Area</label>
-                            </div>
-                            <div class="full-coln">
-                                <label>:</label>
-                            </div>
-                            <div class="full-desc">
-                                <label>{{item.Area}}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <div class="full-labl">
-                                <label>Fees</label>
-                            </div>
-                            <div class="full-coln">
-                                <label>:</label>
-                            </div>
-                            <div class="full-desc">
-                                <label></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="user d-flex">
-                            <button class="btn btn-success">Book Appointment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
-</div>
+</section>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-basic-title">Doctor Profile</h5>
+        <span aria-hidden="true" (click)="d('Cross click')">&times;</span>
+
+    </div>
+    <div class="modal-body doctor-details">
+        <div class="row">
+            <div class="col-md-3">
+                <img *ngIf="doctorDetailsData.DocPicture !== 'null' && doctorDetailsData.DocPicture" src="{{doctorDetailsData.DocPicture}}" class="doctor" />
+                <img *ngIf="doctorDetailsData.DocPicture === 'null' || doctorDetailsData.DocPicture === null"
+                    src="https://asiandhanbad.aimsindia.com/wp-content/uploads/2019/06/default-doctor.png"
+                    class="doctor" />
+            </div>
+            <div class="col-md-9 doctor-profile">
+               <div class="row">
+                   <div class="col-md-12">
+                       <label *ngIf="doctorDetailsData.doctor_name !== null">{{doctorDetailsData.doctor_name}}</label>
+                       <label *ngIf="doctorDetailsData.doctor_name === null">N/A</label>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-12">
+                        <label *ngIf="doctorDetailsData.specialization !== null">{{doctorDetailsData.specialization}}</label>
+                        <label *ngIf="doctorDetailsData.specialization === null">N/A</label>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-md-12">
+                        <label *ngIf="doctorDetailsData.Designation !== null">{{doctorDetailsData.Designation}}</label>
+                        <label *ngIf="doctorDetailsData.Designation === null">N/A</label>
+                   </div>
+               </div> 
+              
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="doctor-info">Membershrip</label>
+                     </div>
+                     <div class="col-md-9">
+                         <label *ngIf="doctorDetailsData.Membership !== null">{{doctorDetailsData.Membership}}</label>
+                         <label *ngIf="doctorDetailsData.Membership === null">N/A</label>
+                     </div>
+                </div>
+                <div class="row">
+                 <div class="col-md-3">
+                     <label class="doctor-info">Training</label>
+                  </div>
+                  <div class="col-md-9">
+                      <label *ngIf="doctorDetailsData.Training !== null">{{doctorDetailsData.Training}}</label>
+                      <label *ngIf="doctorDetailsData.Training === null">N/A</label>
+                  </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-3">
+                     <label class="doctor-info">Center</label>
+                  </div>
+                  <div class="col-md-9">
+                      <label *ngIf="doctorDetailsData.center_address !== null">{{doctorDetailsData.center_address}}</label>
+                      <label *ngIf="doctorDetailsData.center_address === null">N/A</label>
+                  </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-3">
+                     <label class="doctor-info">Fees</label>
+                  </div>
+                  <div class="col-md-9">
+                      <label *ngIf="doctorDetailsData.Fees !== null">{{doctorDetailsData.Fees}}</label>
+                      <label *ngIf="doctorDetailsData.Fees === null">N/A</label>
+                  </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-3">
+                     <label class="doctor-info">Center Url</label>
+                  </div>
+                  <div class="col-md-9">
+                      <label *ngIf="doctorDetailsData.center_URL !== null"><a href="https://{{doctorDetailsData.center_URL}}" target="_blank" rel="noopener noreferrer">Center Location</a></label>
+                      <label *ngIf="doctorDetailsData.center_URL === null">N/A</label>
+                  </div>
+             </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="modal-footer">
+        <button mat-raised-button class="profile" [routerLink]="['/appointment']" routerLinkActive="router-link-active">Book Appointment</button>
+    </div> -->
+</ng-template>

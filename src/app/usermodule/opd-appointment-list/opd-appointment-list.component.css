@@ -1,17 +1,32 @@
-.section-title {
-    text-align: center;
-    /* margin-bottom: 40px; */
-}
-
-.form_wrapper {
-    width: 500px;
+.search{
+    background:#689F38!important;
+    margin-right: 10px;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    padding: 0px 25px;
+    float: right;
 }
 
 .userBox {
-    width: 400px;
+    width: 700px;
 }
 
 table {
     width: 100%;
-    margin-bottom: 30px;
 }
+.tblheader{
+    background-color: #689F38;
+    
+}
+.tblheader th{
+    color: #FDFDFD!important;
+    font-size: 15px!important;
+}
+.mat-row:nth-child(odd) {
+    background-color: #DDD;
+}
+
+/* .mat-row:nth-child(even) {
+    background-color: #DDD;
+} */

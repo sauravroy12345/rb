@@ -1,26 +1,11 @@
-/* Chrome, Safari, Edge, Opera */
-
-/* input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-
-/* Firefox */
-
-/* input[type=number] {
-    -moz-appearance: textfield;
-}  */
-
-/* .register {
-    width: 50%;
-    border: 1px solid rgb(82, 76, 76);
-    padding: 10px 15px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-} */
-.form_wrapper{
-    width:800px;
+.buttons{
+    background:#689F38!important;
+    /* margin-right: 10px; */
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    width:100%;
+  }
+.dob {
+    width: 100%;
 }

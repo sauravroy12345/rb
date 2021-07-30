@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { RbService } from 'src/app/rb.service';
 
 @Component({
@@ -8,18 +9,30 @@ import { RbService } from 'src/app/rb.service';
 })
 export class QualityComponent implements OnInit {
   AllpageContent: any;
-  constructor(private rbservice: RbService) { }
+  header: any;
+  constructor(private rbservice: RbService, private toaster: ToastrService) { }
   panelOpenState = false;
 
   ngOnInit(): void {
     this.allquality();
   }
   allquality(): any {
+    this.rbservice.addClass();
     this.rbservice.postService('getQuality', '')
       .subscribe((res: any) => {
         console.log(res);
-        this.AllpageContent = res.data;
-        console.log(res.data);
+        this.rbservice.removeClass();
+        if (res.status === 'success') {
+          this.AllpageContent = res.content;
+          this.header = res.header[0];
+          console.log(res.content);
+        }
+      },
+      (err: any) => {
+        setTimeout(() => {
+          this.rbservice.removeClass();
+          this.toaster.error('Network Error');
+        }, 5000);
       });
   }
 }

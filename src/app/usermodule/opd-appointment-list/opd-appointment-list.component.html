@@ -1,82 +1,73 @@
-<section class="service-page">
-    <div class="container">
-        <div class="contact">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2>OPD Appointment List</h2>
-                    </div>
-                </div>
-            </div>
-
+<section class="opd">
+    <div class="opd-page">
+        <div class="section-title">
+            <h2>OPD Appointment List</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form_wrapper">
-                    <form>
-                        <div class="ml-auto mr-auto userBox">
+    </div>
+        <div class="col-md-11 opd-box">
+            <form>
+                <div class="ml-auto mr-auto userBox mb">
+                    <div class="row">
+                        <div class="col-md-4">
                             <div class="material">
 
                                 <input type="date" required placeholder="From Date.">
                                 <!-- <mat-icon aria-hidden="false" class="date">date_range</mat-icon> -->
-                                <span class="borda"> *</span>
+                                <span class="borda"></span>
                                 <!-- <label>D.O.B.</label> -->
-
+        
                             </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="material">
 
                                 <input type="date" required placeholder="To Date.">
                                 <!-- <mat-icon aria-hidden="false" class="date">date_range</mat-icon> -->
-                                <span class="borda"> *</span>
+                                <span class="borda"></span>
                                 <!-- <label>D.O.B.</label> -->
-
+        
                             </div>
                         </div>
-                        <mat-icon class="icons"> search</mat-icon>
-                    </form>
+                        <div class="col-md-4">
+                            <button mat-raised-button class="search">Search</button>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
-            </div>
+            </form>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Biiling Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef> Bill Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> View Details </th>
+                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tblheader"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
+            </table>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="position">
-                        <th mat-header-cell *matHeaderCellDef> Patient Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                    </ng-container>
-
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef> Biiling Id </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
-
-                    <!-- Weight Column -->
-                    <ng-container matColumnDef="weight">
-                        <th mat-header-cell *matHeaderCellDef> Bill Date </th>
-                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                    </ng-container>
-
-                    <!-- Symbol Column -->
-                    <ng-container matColumnDef="symbol">
-                        <th mat-header-cell *matHeaderCellDef> View Details </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                    </ng-container>
-
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="tblheader"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>
-                </table>
-
-
-
-
-            </div>
-        </div>
-    </div>
-
 </section>

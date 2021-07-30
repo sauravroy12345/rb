@@ -1,20 +1,4 @@
-.sidenav-container {
-  height: 100%;
-}
 
-.sidenav {
-  width: 200px;
-}
-
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  /* position: sticky; */
-  top: 0;
-  z-index: 1;
-}
 /* header css */
 @media (min-width: 768px) { 
   .dropdown:hover .dropdown-menu {
@@ -44,16 +28,13 @@
   color:#000!important;
 }
 .logo {
-  width: 70px;
-    height: 35px;
-  /* margin-top: 7px; */
-
+  width: 100px;
 }
 .header-top-bar {
   padding: 10px 0px;
 }
 ul.top-bar-info li {
-  color: #fff;
+  color: #689F38;
   font-size: 14px;
 }
 /* ul.top-bar-info{
@@ -74,9 +55,16 @@ ul.top-bar-info li {
   left: 4px;
 }
 nav{
-  padding: 10px 0px 10px 120px!important;
-  background: #fff!important;
+  /* padding: 10px 0px 10px 120px!important; */
+  background: #689F38!important;
   font-size: 15px;
+}
+ul.navbar-nav li.nav-item {
+  padding: 0px 5px;
+}
+ul.navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
 }
 .navbar-brand{
   padding: 0px!important;
@@ -88,10 +76,10 @@ nav{
 }
 .right-side{
   display: flex;
- margin-left: 35px;
+  /* margin-left: 355px; */
 }
 .dropdown-menu{
-  background-color: #2d9436;
+  background-color: #689F38;
   width: 200px;
 }
 .dropdown-menu .nav-link {
@@ -111,14 +99,33 @@ a.mat-list-item{
   background: none;
 }
 .mat-toolbar{
-  background-color: #2d9436; 
+  background-color: #689F38; 
 }
 .mat-drawer-container{
   background: none;
 }
-.top-bar-info {
+/* .top-bar-info {
   float: right;
-}
+} */
 .top-bar-info li{
-  padding:0px 10px;
+  padding:0px 8px;
+}
+ul.navbar-nav li a {
+  color: #fff!important;
+}
+.list-inline-item{
+  display: flex!important;
+}
+.fixed{
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
+}
+.fixed-logo{
+  width: 50px;
+  position: absolute;
+  display: none;
+  top: 4px;
+  left: 8%;
 }

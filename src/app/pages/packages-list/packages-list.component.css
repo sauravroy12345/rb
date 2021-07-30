@@ -2,22 +2,33 @@
 a:hover{
     color:#000;
 }
-.section-title{
-    text-align: center;
-}
+
 .packages-box{
-    height: 430px;
     color:#000;
 }
 
 .packages-box .mat-icon{
     color:#2d9436;
+    font-size: 15px;
 }
-.package{
+.package-content{
     text-align: center;
     margin-bottom: 10px;
 }
-.package i {
+.package-contenti {
     font-weight: bold;
     font-size: 22px;
+}
+.packages-box p{
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+.profile{
+    width:100%;
+}
+.more {
+    background-color: #225020;
+}
+.mat-icon {
+    cursor: pointer;
 }

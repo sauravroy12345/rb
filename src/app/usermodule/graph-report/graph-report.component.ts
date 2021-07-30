@@ -43,6 +43,7 @@ export class GraphReportComponent implements OnInit {
     const graphData = {
       RBAuthKey: 'RBDWAh!Q1s74e',
       user_id: 'PRB0140236'
+      // user_id: this.userId
     };
     this.rbservice.postService('Patient/Graph', graphData)
       .subscribe((res: any) => {

@@ -1,34 +1,82 @@
-.form_wrapper {
-    width: 800px;
+.buttons {
+    background: #689F38!important;
+    /* margin-right: 10px; */
+    border: none;
+    color: #fff!important;
+    border-radius: 5px;
+    width: 100%;
 }
 
-.section-title {
-    text-align: center;
-    /* margin-bottom: 40px; */
+.book-btn {
+    padding: 0px 45px;
 }
 
-.search {
-    position: absolute;
-    top: 11.3%;
-    right: 3%;
-    font-size: 24px;
-    color: #fff;
-    background: #1A237E;
-    padding: 1px;
-    font-weight: 700;
+.search-icon {
+    position: relative;
+    float: right;
+    top: -29px;
+    color: #689F38;
+    margin-right: 10px;
 }
 
-.tab {
-    max-height: 230px;
-    overflow-y: scroll;
-    border: 2px solid #ccc;
+.test-sec {
+    border: 1px solid #ccc;
+}
+
+.tabl {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.tabl td:nth-child(1),
+.tabl th:nth-child(1) {
+    min-width: 100px;
+}
+
+.tabl td:nth-child(2),
+.tabl th:nth-child(2) {
+    min-width: 500px;
+}
+
+.tabl td:nth-child(3),
+.tabl th:nth-child(3) {
+    width: 350px;
+}
+
+.tabl thead {
+    background-color: #689F38;
+    color: #FDFDFD;
+}
+
+.tabl thead tr {
+    display: block;
+    position: relative;
+}
+
+.tabl tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: 230px;
+}
+
+.tabl tbody tr:nth-child(even) {
+    background-color: #DDD;
+}
+
+.tabl tbody tr {
+    line-height: 20px;
+}
+
+.tabl thead tr {
+    line-height: 20px;
 }
 
 #selectedTest {
     text-align: left;
-    border: 4px solid #ccc;
-    margin-top: 40px !important;
-    margin: 10px;
+    border: 2px solid #ccc;
+    margin-top: 20px !important;
     padding: 5px;
     max-height: 100px;
     min-height: 50px;
@@ -37,4 +85,42 @@
 
 .bgC {
     background-color: rgb(135, 243, 135);
+}
+
+.mat-expansion-panel {
+    margin-bottom: 15px;
+}
+
+.fa-star {
+    font-size: xx-small;
+}
+
+.crossI {
+    float: right;
+    cursor: pointer;
+}
+
+.mat-icon {
+    color: #2d9436;
+    font-size: 20px;
+}
+
+.side {
+    float: right;
+}
+
+tbody td label {
+    margin: 0px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+}
+
+tbody td {
+    padding: 0px;
+}
+
+.mat-form-field-invalid .mat-input-element,
+.mat-form-field.mat-warn .mat-input-element {
+    caret-color: #0bd811 !important;
 }

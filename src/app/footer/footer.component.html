@@ -1,115 +1,71 @@
-<footer class="footer section gray-bg">
-    <div class="container">
+<footer>
+    <div class="footer section gray-bg">
+        <div class="container">
+        
         <div class="row">
-            <div class="col-lg-3 mr-auto col-sm-6">
-                <div class="widget mb-5 mb-lg-0">
-                    <div class="logo mb-4">
-                        <img src="assets/img/logo.png" alt="" class="img-fluid logo_footer">
-                    </div>
-                    <p>Head Office:<br>R B Diagnostics (P) Ltd P-713 Block A, Lake Town, Kolkata-700089 Landmark- Jaya Multiplex Laketown
-                    </p>
-
-                    <ul class="list-inline footer-socials mt-4">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
+            <div class="col-md-3">
+                <div class="logo mb-4">
+                    <img src="../../website/assets/img/logo.png" alt="" class="img-fluid logo_footer">
                 </div>
+                <p style="margin-bottom: 0px;">Head Office:<br>R B Diagnostics (P) Ltd P-713 Block A, Lake Town, Kolkata-700089 Landmark- Jaya Multiplex Laketown
+                </p>
+               
             </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="widget mb-5 mb-lg-0">
-                    <h4 class="text-capitalize mb-3">Short Links</h4>
-                    <div class="divider mb-4"></div>
-
-                    <ul class="list-unstyled footer-menu lh-35">
-                        <li><a href="#">Overview </a></li>
-                        <li><a href="#">Work With Us</a></li>
-                        <li><a href="javascript:void(0)" [routerLink]="['/contact']" routerLinkActive="router-link-active">Contact Us</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy & Policy</a></li>
-                        <li><a href="#">Payment & Refund Policy</a></li>
+            <div class="col-md-4">
+                <h4 class="text-capitalize mb-3">Short Links</h4>
+                    <div class="divider mb-3"></div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <ul class="list-unstyled footer-menu lh-35" style="margin-bottom: 0px;">
+                                <li><a href="#">Overview </a></li>
+                                <li><a href="#">Work With Us</a></li>
+                                <li><a href="#" [routerLink]="['/contact']" routerLinkActive="router-link-active">Contact Us</a></li>
+                                <li><a href="#" [routerLink]="['/centers']" routerLinkActive="router-link-active" >Centers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7">
+                            <ul class="list-unstyled footer-menu lh-35" style="margin-bottom: 0px;">
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy & Policy</a></li>
+                                <li><a href="#">Payment & Refund Policy</a></li>
+                                <li><a href="#">Disclaimer</a></li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <h4 class="text-capitalize mb-3">Help</h4>
+                    <div class="divider mb-3"></div>
+                    <ul class="list-unstyled footer-menu lh-35" style="margin-bottom: 0px;">
+                        <li>Online Report</li>
                         <li><a href="#">Customer Checkout Flow</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li class="list-inline-item">
+                            <mat-icon style="font-size: small;" aria-hidden="false">call</mat-icon>+91 98300 65859
+                        </li>
+                        <li class="list-inline-item">
+                            <mat-icon style="font-size: small;" aria-hidden="false">email</mat-icon>corporate@rbdiagnostics.com
+                        </li>
                     </ul>
-                </div>
             </div>
-
-            <div class="col-lg-2 col-md-6 col-sm-6">
-                <div class="widget mb-5 mb-lg-0">
-                    <h4 class="text-capitalize mb-3">Help</h4>
-                    <div class="divider mb-4"></div>
-
-                    <ul class="list-unstyled footer-menu lh-35">
-                        <li>How to get Online Report?</li>
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="widget widget-contact mb-5 mb-lg-0">
-                    <h4 class="text-capitalize mb-3">Get in Touch</h4>
-                    <div class="divider mb-4"></div>
-
-                    <div class="footer-contact-block mb-4">
-                        <div class="icon d-flex align-items-center">
-                            <mat-icon class="mr-3">support_agent</mat-icon>
-                            <span class="h6 mb-0">Support Available for 24/7</span>
-                        </div>
-
-
-                    </div>
-                    <div class="footer-contact-block mb-4">
-                        <div class="icon d-flex align-items-center">
-                            <mat-icon class="mr-3">email</mat-icon>
-                            <span class="h6 mb-0">corporate@rbdiagnostics.com</span>
-                        </div>
-                    </div>
-                    <div class="footer-contact-block mb-4">
-                        <div class="icon d-flex align-items-center">
-                            <mat-icon class="mr-3">support_agent</mat-icon>
-                            <span class="h6 mb-0">Mon to Sat : 07:30 a.m. - 08:30 p.m.<br>
-							Sun: 07:30 a.m. - 02:00 p.m.
-							</span>
-                        </div>
-
-
-                    </div>
-                    <div class="footer-contact-block mb-4">
-                        <div class="icon d-flex align-items-center">
-                            <mat-icon class="mr-3">call</mat-icon>
-                            <span class="h6 mb-0">+91 98300 65859
-							</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-2">
+                <h4 class="text-capitalize mb-3">Follow Us</h4>
+                    <div class="divider mb-3"></div>
+                <ul class="list-inline footer-socials">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                </ul>
             </div>
         </div>
-
-        <div class="footer-btm py-2">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-12">
-                    <div class="copyright" style="text-align: center;">
-                        &copy; Copyright @2021 <span class="text-color">RB Diagnostic Pvt.Ltd.</span>Designed & Developed by <a href="#" target="_blank">Infymax Solutions Pvt. Ltd.</a>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-						</form>
-					</div>
-				</div> -->
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <a class="backtop js-scroll-trigger" href="#top">
-                        <i class="icofont-long-arrow-up"></i>
-                    </a>
+        
+        </div>
+    </div>
+    <div class="footer-btm">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-12">
+                <div class="copyright" style="text-align: center;">
+                    &copy; Copyright @2021 <span class="text-color">RB Diagnostic Pvt.Ltd.</span>Designed & Developed by <a href="#" target="_blank">Infymax Solutions Pvt. Ltd.</a>
                 </div>
             </div>
         </div>

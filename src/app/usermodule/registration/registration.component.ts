@@ -12,8 +12,9 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  // userForm: FormGroup;
-  maxDate: any = this.datePipe.transform( new Date().setDate(new Date().getDate() - 1), 'yyyy-MM-dd');
+  submitted = false;
+  otp: '';
+  maxDate: any = this.datePipe.transform(new Date().setDate(new Date().getDate() - 1), 'yyyy-MM-dd');
   constructor(private fb: FormBuilder, private rbservice: RbService, private modalService: NgbModal,
               private router: Router, private toaster: ToastrService, private datePipe: DatePipe) { }
   public userForm = this.fb.group({
@@ -28,7 +29,7 @@ export class RegistrationComponent implements OnInit {
     Alt_mobile_no: ['', [Validators.pattern('^[0-9]{10}$')]],
     Email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     Dateofbirth: ['', [Validators.required]],
-    Gender: ['', [Validators.required]],
+    Gender: ['M', [Validators.required]],
     Address: ['', [Validators.required, Validators.maxLength(50)]],
     Landmark: ['', Validators.maxLength(50)],
     ZipCode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
@@ -41,7 +42,6 @@ export class RegistrationComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // console.log(this.maxDate);
   }
 
   // convenience getter for easy access to form fields
@@ -49,7 +49,12 @@ export class RegistrationComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  async onSubmit(): Promise<any> {
+  async onSubmit(content): Promise<any> {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.userForm.invalid) {
+      return;
+    }
     // console.log('>>>>>>>', this.userForm, 'aaaaaaa', this.userForm.get('Dateofbirth'));
     // console.log(JSON.stringify(this.userForm));
     const otpData = { RBAuthKey: 'RBDWAh!Q1s74e', mobile_no: (this.userForm.controls.Mobile_no.value).toString() };
@@ -57,47 +62,56 @@ export class RegistrationComponent implements OnInit {
     await this.rbservice.postService('Patient/GenerateOTP', otpData)
       .toPromise().then(async (res: any) => {
         console.log('>>>>>>>>>>>>', res);
-        this.toaster.success(res.OTP);
-        // this.modalService.open(content, { centered: true });
-        const regData = {
-          RBAuthKey: this.userForm.controls.RBAuthKey.value,
-          channel: this.userForm.controls.channel.value,
-          PatType: this.userForm.controls.PatType.value,
-          OTP: res.OTP,
-          PTitle: this.userForm.controls.PTitle.value,
-          FName: this.userForm.controls.FName.value,
-          LName: this.userForm.controls.LName.value,
-          Mobile_no: (this.userForm.controls.Mobile_no.value).toString(),
-          Alt_mobile_no: this.userForm.controls.Alt_mobile_no.value,
-          Email: this.userForm.controls.Email.value,
-          Dateofbirth: this.userForm.controls.Dateofbirth.value,
-          Gender: this.userForm.controls.Gender.value,
-          Address: this.userForm.controls.Address.value,
-          Landmark: this.userForm.controls.Landmark.value,
-          ZipCode: (this.userForm.controls.ZipCode.value).toString(),
-          City: this.userForm.controls.City.value,
-          State: this.userForm.controls.State.value,
-          Reg_status: this.userForm.controls.Reg_status.value,
-          Pat_status: this.userForm.controls.Pat_status.value,
-          IsMobileregister: this.userForm.controls.IsMobileregister.value,
-          Registerdate: this.userForm.controls.Registerdate.value
-        };
-        console.log(JSON.stringify(regData));
-        await this.rbservice.postService('Patient/Registration', regData).toPromise().then(
-          (resp: any) => {
-            console.log(resp);
-            this.toaster.success(resp.message);
-            const validOTP = { RBAuthKey: 'RBDWAh!Q1s74e', user_id: resp.user_id, OTP: res.OTP, Reg_status: '1' };
-            console.log('<<<<<<<<<<<', JSON.stringify(validOTP));
-            this.rbservice.postService('Patient/ValidateOTP', validOTP)
-              .subscribe((respo: any) => {
-                console.log(respo);
-                this.toaster.success(respo.message);
-                this.router.navigateByUrl('changePass');
-              });
-          }
-        );
+        if (res.status === 'success') {
+          this.otp = res.OTP;
+          this.toaster.success(res.OTP, 'OTP :');
+          this.modalService.open(content, { centered: true });
+        } else if (res.status === 'failure') {
+          this.userForm.reset();
+        }
       });
+  }
+  async procced(): Promise<any> {
+    const regData = {
+      RBAuthKey: this.userForm.controls.RBAuthKey.value,
+      channel: this.userForm.controls.channel.value,
+      PatType: this.userForm.controls.PatType.value,
+      OTP: this.otp,
+      PTitle: this.userForm.controls.PTitle.value,
+      FName: this.userForm.controls.FName.value,
+      LName: this.userForm.controls.LName.value,
+      Mobile_no: (this.userForm.controls.Mobile_no.value).toString(),
+      Alt_mobile_no: this.userForm.controls.Alt_mobile_no.value,
+      Email: this.userForm.controls.Email.value,
+      Dateofbirth: this.datePipe.transform(this.userForm.controls.Dateofbirth.value, 'dd-MM-yyyy'),
+      Gender: this.userForm.controls.Gender.value,
+      Address: this.userForm.controls.Address.value,
+      Landmark: this.userForm.controls.Landmark.value,
+      ZipCode: (this.userForm.controls.ZipCode.value).toString(),
+      City: this.userForm.controls.City.value,
+      State: this.userForm.controls.State.value,
+      Reg_status: this.userForm.controls.Reg_status.value,
+      Pat_status: this.userForm.controls.Pat_status.value,
+      IsMobileregister: this.userForm.controls.IsMobileregister.value,
+      Registerdate: this.userForm.controls.Registerdate.value
+    };
+    console.log(JSON.stringify(regData));
+    await this.rbservice.postService('Patient/Registration', regData).toPromise().then(
+      (resp: any) => {
+        console.log(resp);
+        this.toaster.success(resp.message);
+        const validOTP = { RBAuthKey: 'RBDWAh!Q1s74e', user_id: resp.user_id, OTP: this.otp, Reg_status: '1' };
+        console.log('<<<<<<<<<<<', JSON.stringify(validOTP));
+        this.rbservice.postService('Patient/ValidateOTP', validOTP)
+          .subscribe((respo: any) => {
+            console.log(respo);
+            this.userForm.reset();
+            this.submitted = false;
+            this.toaster.success(respo.message);
+            this.router.navigateByUrl('change-password');
+          });
+      }
+    );
   }
 
 }

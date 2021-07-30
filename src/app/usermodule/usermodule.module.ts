@@ -21,6 +21,9 @@ import { MembersComponent } from './members/members.component';
 import { AddMembersComponent } from './add-members/add-members.component';
 import { GraphReportComponent } from './graph-report/graph-report.component';
 import { PatientReportListComponent } from './patient-report-list/patient-report-list.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [RegistrationComponent, LoginComponent, UserDashboardComponent,
@@ -37,7 +40,6 @@ import { PatientReportListComponent } from './patient-report-list/patient-report
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDatepickerModule,
     PagesModule,
     MatTableModule,
     MatToolbarModule,
@@ -45,7 +47,12 @@ import { PatientReportListComponent } from './patient-report-list/patient-report
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  exports: [ChangePasswordComponent]
 })
 export class UsermoduleModule { }

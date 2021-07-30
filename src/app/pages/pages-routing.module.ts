@@ -24,6 +24,10 @@ const routes: Routes = [
     component: DoctorListComponent
   },
   {
+    path: 'doctor-list/:data',
+    component: DoctorListComponent
+  },
+  {
     path: 'doctor-detail/:data',
     component: DoctorDetailComponent
   },
@@ -40,7 +44,7 @@ const routes: Routes = [
     component: PackagesListComponent
   },
   {
-    path: 'packages-details',
+    path: 'packages-details/:service_id',
     component: PackageDetailsComponent
   },
   {
@@ -49,6 +53,10 @@ const routes: Routes = [
   },
   {
     path: 'home-collection',
+    component: HomeCollectionComponent
+  },
+  {
+    path: 'home-collection/:serviceData',
     component: HomeCollectionComponent
   },
   {

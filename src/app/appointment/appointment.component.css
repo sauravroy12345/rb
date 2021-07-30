@@ -1,11 +1,10 @@
-.form_wrapper{
-    width: 900px;
-}
+
 .doctor-inner{
     padding: 0px;
     list-style-type: none;
     text-align: center;
     color: #000;
+    font-size: 12px;
 }
 .doctor-detail{
     font-size: 18px;
@@ -13,4 +12,16 @@
 }
 .contact_right_side{
     padding: 0px 20px;
+    font-size: 12px;
+}
+.doctor{
+    margin: 0px;
+}
+.buttons{
+    background:#689F38!important;
+    /* margin-right: 10px; */
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    width: 100%;
 }

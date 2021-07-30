@@ -1,7 +1,9 @@
-
 a:hover{
     color:#000;
 }
-.section-title{
-    text-align: center;
+.services-box{
+    cursor: pointer;
+}
+.services-box:hover .service-img, p{
+    transform: scale(1.03);
 }

@@ -1,279 +1,44 @@
-<section class="service-page">
-    <div class="container">
-        <div class="service">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2>{{title}}</h2>
-                        <div class="divider mx-auto my-4"></div>
-                    </div>
-                </div>
-            </div>
-            <mat-accordion *ngFor="let item of serviceImg">
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            {{item.ServiceName}}
-                        </mat-panel-title>
-                        <!-- <mat-panel-description>
-                  
-                </mat-panel-description> -->
-                    </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="{{item.ServiceImage}}" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <section innerHTML='{{item.ServiceDesc}}'></section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <section innerHTML='{{item.ServiceFacility}}'></section>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <section innerHTML='{{item.ServiceBranch}}'></section>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <!-- <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Diagnostic Service - USG
-                        </mat-panel-title> -->
-            <!-- <mat-panel-description>
-                   
-                 </mat-panel-description> -->
-            <!-- </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="assets/img/usg.jpg" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p>An ultrasound scan is a medical test that uses high-frequency sound waves to capture live images from the inside of your body. It's also known as sonography. The technology is similar to that used by sonar and radar, which
-                                help the military detect planes and ships. An ultrasound allows your doctor to see problems with organs, vessels, and tissues without needing to make an incision. Unlike other imaging techniques, ultrasound uses no radiation.
-                                For this reason, it's the preferred method for viewing a developing fetus during pregnancy.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Our Facilities</p>
-                            <ul class="Facilities">
-                                <li>Most people associate ultrasound scans with pregnancy. These scans can provide an expectant mother with the first view of her unborn child. However, the test has many other uses.</li>
-                                <li>Your doctor may order an ultrasound if you are having pain, swelling, or other symptoms that require an internal view of your organs. An ultrasound can provide a view of the:
-                                    <ul class="Facilities inner">
-                                        <li>Bladder</li>
-                                        <li>Brain(in infants)</li>
-                                        <li>Eyes</li>
-                                        <li>Gallbladder</li>
-                                        <li>Kidneys</li>
-                                        <li>Liver</li>
-                                        <li>Ovaries</li>
-                                        <li>Pancreas</li>
-                                        <li>Spleen</li>
-                                        <li>Thyroid</li>
-                                        <li>Testicles</li>
-                                        <li>Uterus</li>
-                                        <li>Blood Vessels</li>
-                                    </ul>
-                                </li>
-                                <li>An ultrasound is also a helpful way to guide surgeons' movements during certain medical procedures, such as biopsies.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Available Branches</p>
-                            <ul class="branches">
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Salt Lake</li>
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Lake Town</li>
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Kakurgachi</li>
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Topsia</li>
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Andul</li>
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Liluah</li>
-                            </ul>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Diagnostic Service - CT Scan
-                        </mat-panel-title> -->
-            <!-- <mat-panel-description>
-                   
-                 </mat-panel-description> -->
-            <!-- </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="assets/img/ct-scan.jpg" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p>Computed tomography (CT) is a diagnostic imaging test used to create detailed images of internal organs, bones, soft tissue and blood vessels. The cross-sectional images generated during a CT scan can be reformatted in multiple
-                                planes, and can even generate 3D images which can be viewed on a computer monitor, printed on film or transferred to electronic media. CT scanning is often the best method for detecting many different cancers since the
-                                images allow your doctor to confirm the presence of a tumor and determine its size and location. CT is fast, painless, noninvasive and accurate. In emergency cases, it can reveal internal injuries and bleeding quickly enough
-                                to help save lives.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Our Facilities</p>
-                            <ul class="Facilities">
-                                <li>It is useful for obtaining images of:
-                                    <ul class="Facilities inner">
-                                        <li>Soft tissues</li>
-                                        <li>The Pelvis</li>
-                                        <li>Blood Vessels</li>
-                                        <li>Lungs</li>
-                                        <li>Brain</li>
-                                        <li>Abdomen</li>
-                                        <li>Bones</li>
-                                    </ul>
-                                </li>
-                                <li>CT is often the preferred way of diagnosing many cancers, such as liver, lung, and pancreatic cancers.</li>
-                                <li>The image allows a doctor to confirm the presence and location of a tumor, its size, and how much it has affected nearby tissue.</li>
-                                <li>A scan of the head can provide important information about the brain, for instance, if there is any bleeding, swelling of the arteries, or a tumor.</li>
-                                <li>A CT scan can reveal a tumor in the abdomen, and any swelling or inflammation in nearby internal organs. It can show any lacerations of the spleen, kidneys, or liver.</li>
-                                <li>As a CT scan detects abnormal tissue, it is useful for planning areas for radiotherapy and biopsies, and it can provide valuable data on blood flow and other vascular conditions.</li>
-                                <li>It can help a doctor assess bone diseases, bone density, and the state of the patient's spine.</li>
-                                <li>It can also provide vital data about injuries to a patient's hands, feet, and other skeletal structures. Even small bones are clearly visible, as well as their surrounding tissue.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Available Branches</p>
-                            <ul class="branches">
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Lake Town</li>
-                            </ul>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Diagnostic Service - MRI
-                        </mat-panel-title> -->
-            <!-- <mat-panel-description>
-                   
-                 </mat-panel-description> -->
-            <!-- </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="assets/img/mri.jpg" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p>Magnetic resonance imaging (MRI) of the body uses a powerful magnetic field, radio waves and a computer to produce detailed pictures of the inside of your body. It may be used to help diagnose or monitor treatment for a variety
-                                of conditions within the chest, abdomen and pelvis. If you're pregnant, body MRI may be used to safely monitor your baby. Tell your doctor about any health problems, recent surgeries or allergies and whether there's a possibility
-                                you are pregnant. The magnetic field is not harmful, but it may cause some medical devices to malfunction. Most orthopedic implants pose no risk, but you should always tell the technologist if you have any devices or metal
-                                in your body. Guidelines about eating and drinking before your exam vary between facilities. Unless you are told otherwise, take your regular medications as usual. Leave jewelry at home and wear loose, comfortable clothing.
-                                You may be asked to wear a gown. If you have claustrophobia or anxiety, you may want to ask your doctor for a mild sedative prior to the exam.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Our Facilities</p>
-                            <ul class="Facilities">
-                                <li>An MRI scan can be used to examine almost any part of the body, including the:
-                                    <ul class="Facilities inner">
-                                        <li>Brain and spinal cord</li>
-                                        <li>Bones and Joints</li>
-                                        <li>Breast</li>
-                                        <li>Heart and blood vessels</li>
-                                        <li>internal organs, such as the liver, womb or prostate gland</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Available Branches</p>
-                            <ul class="branches">
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Lake Town</li>
-                            </ul>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Diagnostic Service - Dexa Scan
-                        </mat-panel-title> -->
-            <!-- <mat-panel-description>
-                   
-                 </mat-panel-description> -->
-            <!-- </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="assets/img/dexa.jpg" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p>A DEXA scan is a special type of X-ray that measures bone mineral density (BMD). DEXA stands for "dual energy X-ray absorptiometry". This type of scan may also be called: a DXA scan or a bone density scan. During the examination,
-                                you are required to change into light cloths and remove all jewelry. The technician guides you in taking the right position in front of the X-ray receiving plate. Depending upon the target body part, you may be asked to
-                                lie down or stand to facilitate the report.</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Available Branches</p>
-                            <ul class="branches">
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Lake Town</li>
-                            </ul>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Diagnostic Service - Mammograpgy
-                        </mat-panel-title> -->
-            <!-- <mat-panel-description>
-                   
-                 </mat-panel-description> -->
-            <!-- </mat-expansion-panel-header>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="assets/img/memo.jpg" class="service-img">
-                        </div>
-                        <div class="col-md-8">
-                            <p>A mammography, or mammogram, is an X-ray of the breast. Itâ€™s a screening tool used to detect and diagnose breast cancer. Together with regular clinical exams and monthly breast self-examinations, mammograms are a key element
-                                in the early diagnosis of breast cancer.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="heading">Available Branches</p>
-                            <ul class="branches">
-                                <li>
-                                    <mat-icon class="location-icon">location_on</mat-icon>Kakurgachi</li>
-                            </ul>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion> -->
+<section class="services">
+    <div class="service-page">
+        <div class="section-title">
+            <h2>{{title}}</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
     </div>
-</section>
+        <div class="col-md-11 service-box">
+             <div class="row">
+               <div class="col-md-12 col-xs-12">
+                <mat-accordion *ngFor="let item of serviceImg ; let i = index">
+                    <mat-expansion-panel [expanded]="i === 0"  (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="margin-bottom: 18px;">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{item.ServiceName}}
+                            </mat-panel-title>
+                            <!-- <mat-panel-description>
+                      
+                    </mat-panel-description> -->
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{item.ServiceImage}}" class="service-img">
+                            </div>
+                            <div class="col-md-8">
+                                <section innerHTML='{{item.ServiceDesc}}'></section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" *ngIf="item.ServiceFacility !== 'null'">
+                                <section innerHTML='{{item.ServiceFacility}}'></section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" *ngIf="item.ServiceBranch !== 'null'">
+                                <section innerHTML='{{item.ServiceBranch}}'></section>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+               </div>
+             </div>
+        </div>
+  </section>

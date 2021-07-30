@@ -7,7 +7,20 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <mat-accordion *ngFor="let item of serviceReqDAta ; let i = index">
+            <mat-expansion-panel [expanded]="i === 0" (opened)="panelOpenState = true" (closed)="panelOpenState = false" style="margin-bottom: 18px;">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item?.Test_name}}
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                   
+                 </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                Department : {{item?.Department}}
+            </mat-expansion-panel>
+        </mat-accordion>
+        <!-- <div class="row">
             <div class="col-md-12">
                 <div class="packages-box">
                     <p class="heading">RBD healthy life</p>
@@ -147,14 +160,16 @@
                                 </a>
                             </ul>
                         </div>
-                    </div>
-                    <div class="row">
+                    </div> -->
+        <!-- if required in future -->
+        <!-- <div class="row">
                         <div class="col-md-12 mt-3" style="text-align:center">
                             <a routerLink="/pages/payment"><button mat-raised-button class="profile">Book Now</button></a>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+        <!-- if required in future  -->
+        <!-- </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

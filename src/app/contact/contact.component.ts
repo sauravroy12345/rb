@@ -16,6 +16,7 @@ export class ContactComponent implements OnInit {
     sms: ['']
   });
   ngOnInit(): void {
+    window.scroll(0, 0);
   }
   // convenience getter for easy access to form fields
   get getControl(): any {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DoctorListComponent } from '../pages/doctor-list/doctor-list.component';
+import { HomeCollectionComponent } from '../pages/home-collection/home-collection.component';
 import { ReportComponent } from '../pages/report/report.component';
 import { AddMembersComponent } from './add-members/add-members.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -65,7 +66,11 @@ const routes: Routes = [
       {
         path: 'past-report-list',
         component: PatientReportListComponent
-      }
+      },
+      {
+        path: 'home-collection',
+        component: HomeCollectionComponent
+      },
     ]
   },
 

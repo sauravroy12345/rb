@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RbService } from '../rb.service';
@@ -9,23 +10,24 @@ import { RbService } from '../rb.service';
 })
 export class ServiceImagingComponent implements OnInit {
   serviceImg: any = [];
-  serviceId: any;
+  serviceName: any;
   title: string;
-  constructor(private rbservice: RbService, private aroute: ActivatedRoute) { }
+  constructor(private rbservice: RbService, private aroute: ActivatedRoute, private titlecase: TitleCasePipe) { }
   panelOpenState = false;
 
   ngOnInit(): void {
     this.aroute.params.subscribe((res: any) => {
-      console.log(res);
-      this.title = res.title;
-      this.serviceId = res;
+      this.title = this.titlecase.transform(res.title);
+      this.serviceName = {title: this.titlecase.transform(res.title)};
     });
     this.allserviceImgList();
   }
   allserviceImgList(): any {
-    this.rbservice.postService('getServiceDetails', this.serviceId)
+    this.rbservice.addClass();
+    this.rbservice.postService('getServiceDetails', this.serviceName)
       .subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
+        this.rbservice.removeClass();
         this.serviceImg = res.data;
       });
   }

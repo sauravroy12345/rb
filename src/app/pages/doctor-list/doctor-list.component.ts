@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RbService } from 'src/app/rb.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { RbService } from 'src/app/rb.service';
 })
 export class DoctorListComponent implements OnInit {
   doctorList: any = [];
+  routeSearchData: any;
+  doctorDetailsData: any;
   DepartmentSpecialityList = [];
   branchist = [];
   areaList = [];
@@ -16,13 +19,28 @@ export class DoctorListComponent implements OnInit {
   centerId = '';
   areaId = '';
   specializationId = '';
-  constructor(private rbservice: RbService, private router: Router) { }
+  constructor(private rbservice: RbService, private router: Router, private aroute: ActivatedRoute, private modalservice: NgbModal) { }
 
   ngOnInit(): void {
-    this.getAllDoctors();
     this.specialityOfDoctor();
     this.areaLIst();
     this.allBranchList();
+    // search data
+    this.aroute.params.subscribe(
+      (res: any) => {
+        if (Object.keys(res).length !== 0) {
+          console.log(JSON.parse(atob(res.data)));
+          this.routeSearchData = JSON.parse(atob(res.data));
+          this.areaId = this.routeSearchData.area_id;
+          this.specializationId = this.routeSearchData.specialization_id;
+          this.centerId = this.routeSearchData.center_id;
+          this.doctorName = this.routeSearchData.search_key;
+          this.byDefaultdoctorSearch(this.routeSearchData);
+        } else {
+          this.getAllDoctors();
+        }
+      }
+    );
   }
   // for center list
   allBranchList(): any {
@@ -67,13 +85,12 @@ export class DoctorListComponent implements OnInit {
         }
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < res.data.length; i++) {
-          // res.data[i].DocPicture = res.data[i].DocPicture;
-          if (res.data[i].DocPicture !== null) {
-            const img = res.data[i].DocPicture.replaceAll(' ', '+');
+          if (res.data[i].DocPicture === 'null') {
+          } else {
             const image = new Image();
+            const img = res.data[i].DocPicture.replaceAll(' ', '+');
             image.src = 'data:image/png;base64,' + img;
             res.data[i].DocPicture = image.src;
-            // console.log(image.src);
           }
         }
       },
@@ -94,20 +111,54 @@ export class DoctorListComponent implements OnInit {
     // console.log(JSON.stringify(searchData));
     this.rbservice.postService('Doctor/Search', searchData).subscribe(
       (res: any) => {
-        // console.log(res);
-        // if (res.status === 'Succesful') {
-        this.rbservice.removeClass();
-        this.doctorList = res.data;
-        // }
+        if (res.status === 'Succesful') {
+          if (res.data !== '') {
+            this.rbservice.removeClass();
+            this.doctorList = res.data;
+          } else {
+            this.doctorList = [];
+          }
+        }
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < res.data.length; i++) {
-          // res.data[i].DocPicture = res.data[i].DocPicture;
-          if (res.data[i].DocPicture !== null) {
-            const img = res.data[i].DocPicture.replaceAll(' ', '+');
+          if (res.data[i].DocPicture === 'null' || res.data[i].DocPicture === null) {
+          } else {
             const image = new Image();
+            const img = res.data[i].DocPicture.replaceAll(' ', '+');
             image.src = 'data:image/png;base64,' + img;
             res.data[i].DocPicture = image.src;
-            // console.log(image.src);
+          }
+        }
+      },
+      (err: any) => {
+        setTimeout(() => {
+          this.rbservice.removeClass();
+        }, 5000);
+      }
+    );
+  }
+  // for search of doctor
+  byDefaultdoctorSearch(data): any {
+    this.rbservice.addClass();
+    // console.log(JSON.stringify(searchData));
+    this.rbservice.postService('Doctor/Search', data).subscribe(
+      (res: any) => {
+        if (res.status === 'Succesful') {
+          if (res.data !== '') {
+            this.rbservice.removeClass();
+            this.doctorList = res.data;
+          } else {
+            this.doctorList = [];
+          }
+        }
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].DocPicture === 'null' || res.data[i].DocPicture === null) {
+          } else {
+            const image = new Image();
+            const img = res.data[i].DocPicture.replaceAll(' ', '+');
+            image.src = 'data:image/png;base64,' + img;
+            res.data[i].DocPicture = image.src;
           }
         }
       },
@@ -128,5 +179,10 @@ export class DoctorListComponent implements OnInit {
   // for viewing Profile
   viewProfile(data: any): any {
     this.router.navigate(['/pages/doctor-detail' + '/' + btoa(JSON.stringify(data))]);
+  }
+  open(content, item: any): any {
+    console.log(item);
+    this.doctorDetailsData = item;
+    this.modalservice.open(content, { centered: true });
   }
 }

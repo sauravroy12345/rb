@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { P404Component } from './p404/p404.component';
@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ServiceImagingComponent } from './service-imaging/service-imaging.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { ServiceCardiologyComponent } from './service-cardiology/service-cardiology.component';
 import { ServiceNeurologyComponent } from './service-neurology/service-neurology.component';
 import { ServicePathologyComponent } from './service-pathology/service-pathology.component';
@@ -31,7 +31,11 @@ import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { ToastrModule } from 'ngx-toastr';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, TitleCasePipe, LowerCasePipe } from '@angular/common';
+import { PagesModule } from './pages/pages.module';
+import { MatChipsModule } from '@angular/material/chips';
+import { AgmCoreModule } from '@agm/core';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 // import { UsermoduleModule } from './usermodule/usermodule.module';
 
 @NgModule({
@@ -80,12 +84,22 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       progressBar: true,
       progressAnimation: 'increasing',
     }),
+    PagesModule,
+    MatChipsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBXB8q439P9X9I3GhVvS2pUzUWYv0MWNHM',
+      libraries: ['places']
+    }),
+    CarouselModule
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
+    NgbCarouselConfig,
+    TitleCasePipe,
+    LowerCasePipe
   ],
   bootstrap: [AppComponent]
 })

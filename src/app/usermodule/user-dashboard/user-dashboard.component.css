@@ -1,15 +1,4 @@
-.welcome {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
-    color: #2d9436;
-    letter-spacing: 0.5px;
-}
-.form_wrapper{
-    padding: 5px 15px;
-    width: 700px;
-    margin: 0% auto 3%;
-}
+
 .add-mem{
     margin: 4px 0px;
     color: #2d9436;
@@ -19,10 +8,10 @@
     top: 5px;
 }
 .labl{
-    width:40%;
+    width:30%;
     color: #000;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
 }
 .coln{
     width:10%;
@@ -36,6 +25,7 @@
     width:19%;
     color: #000;
     font-weight: 500;
+    font-size: 14px;
    
 }
 .full-coln {
@@ -44,4 +34,5 @@
 }
 .full-desc{
     width:76%;
+    font-size: 14px;
 }

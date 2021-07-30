@@ -13,4 +13,7 @@ export class AppComponent implements OnInit {
     // throw new Error('Method not implemented.');
     this.rbservice.removeClass();
   }
+  baseUrl(): any {
+
+  }
 }

@@ -1,51 +1,81 @@
-<div class="after-login">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- <div class="col-md-12">
-                <div class="section-title">
-                    <h2>My Account</h2>
-                    <div class="divider mx-auto my-4"></div>
-                </div>
-            </div> -->
+<div class="app">
+    <div class="sidebar expanded">
+        <div class="sidebar-item no-hover" id="burger" (click)="tab()">
+            <i class="fa fa-bars hand" aria-hidden="true"></i>
+            <!-- <span class="sidebar-item-title">Astuce Media</span> -->
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="sideNav">
-                    <ul class="side-nav">
-                        <a [routerLink]="['/users/sidenav/doctor-list']" routerLinkActive="router-link-active">
-                            <li>Book OPD Appointment</li>
-                        </a>
-                        <a routerLink="/pages/home-collection">
-                            <li>Book Home Collection</li>
-                        </a>
-                        <a routerLink="/users/sidenav/past-report-list">
-                            <li>Past Report</li>
-                        </a>
-                        <a [routerLink]="['/users/sidenav/opd-appoint-list']" routerLinkActive="router-link-active">
-                            <li>OPD Appointment List</li>
-                        </a>
-                        <a>
-                            <li>Home Collection List</li>
-                        </a>
-                        <a [routerLink]="['/users/sidenav/graph-report']" routerLinkActive="router-link-active">
-                            <li>Report Graph</li>
-                        </a>
-                        <a [routerLink]="['/users/sidenav/view-members']" routerLinkActive="router-link-active">
-                            <li>View Members</li>
-                        </a>
-                        <a [routerLink]="['/users/sidenav/change-password']" routerLinkActive="router-link-active">
-                            <li>Change Password</li>
-                        </a>
-                        <a>
-                            <li (click)="logout()">Logout</li>
-                        </a>
-                    </ul>
-                </div>
+        <a [routerLink]="['/users/login']" routerLinkActive="router-link-active" (click)="activeClass(0)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 0}">
+
+                <mat-icon class="icon">account_circle</mat-icon>
+                <span class="sidebar-item-title">My Account</span>
             </div>
-            <div class="col-md-9">
-                <!-- <mat-icon c>menu</mat-icon> -->
-                <router-outlet></router-outlet>
+        </a>
+        <a [routerLink]="['/users/sidenav/doctor-list']" routerLinkActive="router-link-active" (click)="activeClass(1)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 1}">
+
+                <mat-icon class="icon">perm_contact_calendar</mat-icon>
+                <span class="sidebar-item-title">Book OPD Appointment</span>
             </div>
+        </a>
+        <a [routerLink]="['/users/sidenav/home-collection']" (click)="activeClass(2)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 2}">
+                <mat-icon class="icon">bloodtype</mat-icon>
+                <span class="sidebar-item-title">Book Home Collection</span>
+            </div>
+        </a>
+        <a routerLink="/users/sidenav/past-report-list" (click)="activeClass(3)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 3}">
+
+                <mat-icon class="icon">history</mat-icon>
+                <span class="sidebar-item-title"> Past Report</span>
+            </div>
+        </a>
+        <a [routerLink]="['/users/sidenav/opd-appoint-list']" routerLinkActive="router-link-active" (click)="activeClass(4)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 4}">
+                <mat-icon class="icon">list</mat-icon>
+                <span class="sidebar-item-title">OPD Appointment List</span>
+            </div>
+        </a>
+        <a routerLinkActive="router-link-active" (click)="activeClass(5)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 5}">
+                <mat-icon class="icon">home_work</mat-icon>
+                <span class="sidebar-item-title">Home Collection List</span>
+            </div>
+        </a>
+        <a [routerLink]="['/users/sidenav/graph-report']" routerLinkActive="router-link-active" (click)="activeClass(6)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 6}">
+                <mat-icon class="icon">equalizer</mat-icon>
+                <span class="sidebar-item-title"> Report Graph</span>
+            </div>
+        </a>
+        <a [routerLink]="['/users/sidenav/view-members']" routerLinkActive="router-link-active" (click)="activeClass(7)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 7}">
+                <mat-icon class="icon">visibility</mat-icon>
+                <span class="sidebar-item-title">View Members</span>
+            </div>
+        </a>
+        <a [routerLink]="['/users/sidenav/change-password']" routerLinkActive="router-link-active" (click)="activeClass(8)">
+            <div class="sidebar-item" [ngClass]="{'active': activeValue === 8}">
+                <mat-icon class="icon">vpn_key</mat-icon>
+                <span class="sidebar-item-title">Change Password</span>
+            </div>
+        </a>
+        <!-- <a routerLinkActive="router-link-active" (click)="logout()">
+            <div class="sidebar-item">
+                <mat-icon class="icon">logout</mat-icon>
+                <span class="sidebar-item-title">Logout</span>
+            </div>
+        </a> -->
+    </div>
+
+
+    <div class="page">
+
+        <div class="page-content">
+            <router-outlet></router-outlet>
         </div>
     </div>
+
+
 </div>

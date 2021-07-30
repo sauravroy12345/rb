@@ -1,36 +1,72 @@
-<div class="form_wrapper">
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <div class="container login">
-            <div class="form-group login-radio">
-                <div class="login-rad">
-                    *<input type="radio" name="LoginType" value="PT" formControlName="LoginType" id="patient"><label for="patient">Patient Login</label>
-                </div>
-                <div class="login-rad">
-                    <input type="radio" name="LoginType" value="CC" formControlName="LoginType" id="corporate"><label for="corporate">Corporate Login</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="material">
-                    <input type="text" formControlName="mobile_no" required maxlength="10">
-                    <span class="borda"></span>
-                    <label>Mobile No. *</label>
-                </div>
-                <div *ngIf="getControl.mobile_no.touched && getControl.mobile_no.invalid" class="text-danger">
-                    <div *ngIf="getControl.mobile_no.errors.required">Mobile No is required.</div>
-                    <div *ngIf="getControl.mobile_no.errors.pattern">Invalid Mobile No.</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="material">
-                    <input type="password" formControlName="password" required>
-                    <span class="borda"></span>
-                    <label>Password *</label>
-                </div>
-                <div *ngIf="getControl.password.touched && getControl.password.invalid" class="text-danger">
-                    <div *ngIf="getControl.password.errors.required">Password is required.</div>
-                </div>
-            </div>
-            <button class="btn btn-success btn-block" type="submit" [disabled]="loginForm.invalid">Login</button>
+<section class="login">
+    <div class="login-page">
+        <div class="section-title">
+            <h2>Login</h2>
+            <div class="divider mx-auto my-3"></div>
         </div>
-    </form>
-</div>
+    </div>
+    <div class="login-box col-md-6">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="../../website/assets/img/about-img3.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-8">
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    <div class="container login">
+                        <div class="form-group login-radio" [ngClass]="{ 'is-invalid': submitted && getControl.LoginType.errors }">
+                            <label for="patient" class="radio">
+                                        <input type="radio" name="LoginType" value="PT" formControlName="LoginType" id="patient" class="hidden" />
+                                        <span class="label"></span>Patient
+                                    </label>
+
+                            <label for="corporate" class="radio">
+                                        <input type="radio" name="LoginType" value="CC" formControlName="LoginType" 
+                                        id="corporate" class="hidden" />
+                                        <span class="label"></span>Corporate
+                                    </label>
+                            <!-- <i class="fa fa-star req" aria-hidden="true"></i> -->
+                            <div *ngIf="submitted && getControl.LoginType.invalid" class="validation">
+                                <div *ngIf="getControl.mobile_no.errors.required">Required.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="material">
+                                <input type="text" formControlName="mobile_no" required maxlength="10">
+                                <span class="borda"></span>
+                                <label>Mobile No. <i class="fa fa-star req" aria-hidden="true"></i></label>
+                            </div>
+                            <div *ngIf="submitted && getControl.mobile_no.invalid" class="validation">
+                                <div *ngIf="getControl.mobile_no.errors.required">Mobile No is required.</div>
+                                <div *ngIf="getControl.mobile_no.errors.pattern">Invalid Mobile No.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="material">
+                                <input type="password" formControlName="password" required>
+                                <span class="borda"></span>
+                                <label>Password <i class="fa fa-star req" aria-hidden="true"></i></label>
+                            </div>
+                            <div *ngIf="submitted && getControl.password.invalid" class="validation">
+                                <div *ngIf="getControl.password.errors.required">Password is required.</div>
+                            </div>
+                        </div>
+                        <button mat-raised-button class="buttons" type="submit">Login</button>
+
+                        <div class="passW">
+                            <span style="font-size: 8pt;">Don't have any account?</span> &nbsp; &nbsp;
+                            <a [routerLink]="['/users']" routerLinkActive="router-link-active"><span style="font-style: italic; font-size: 8pt;">Register Now!</span></a>
+
+                        </div>
+                        <div>
+                            <span style="font-size: 8pt;">Forgot Password? </span>
+                            <a routerLinkActive="router-link-active"><span style="font-style: italic; font-size: 8pt;">Click Here!</span></a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>

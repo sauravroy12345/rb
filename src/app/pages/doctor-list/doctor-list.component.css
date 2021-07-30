@@ -10,29 +10,75 @@
     margin: 0px auto;
 }
 .search{
-    background:#2d9436;
+    background:#689F38;
     margin-right: 10px;
     border:none;
     color:#fff;
-    border-radius: 50px;
-    padding: 5px 25px;
+    border-radius: 5px;
+    padding: 0px 25px;
+    
 }
 .refresh{
     background-color: #dc1511;
     border:none;
     color:#fff;
-    border-radius: 50px;
-    padding: 5px 30px;
+    border-radius: 5px;
+    padding: 0px 30px;
 }
 .heading{
     color:#000;
     font-size: 18px;
 }
 .doctor-box{
-    height: 340px;
+    height: 165px;
     color:#000;
+    
 }
 .doctor-box .mat-icon{
     color:#2d9436;
+    font-size: 20px;
 }
-
+.doctor-box p{
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+.visibile{
+    position: relative;
+    top: 5px;
+}
+.calendar{
+    text-align:right;
+}
+.doctor-inner {
+    font-size: 12px;
+    padding: 0px;
+    list-style-type: none;
+    margin: 10px 0px;
+    color: #000;
+}
+.profile{
+    width: 100%;
+}
+.view-profile {
+    position: absolute;
+    top: -1px;
+    right: 7%;
+    font-size: 11px;
+}
+.doctor-details{
+    font-size: 12px;
+}
+.doctor-profile{
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+    margin: 11px 0px;
+}
+.doctor-info{
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+}
+.doctor-profile .row {
+    margin-bottom: -6px;
+}

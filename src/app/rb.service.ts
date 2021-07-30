@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../environments/environment.prod';
 // const header = new HttpHeaders();
 // header.set('Access-Control-Allow-Origin', '*');
@@ -9,8 +10,15 @@ const API_URL: string = environment.apiUrl;
 })
 export class RbService {
   patientData: any;
+  private subject = new Subject<any>();
   constructor(private http: HttpClient) {
     this.patientData = JSON.parse(localStorage.getItem('patientData'));
+  }
+  sendMessage(message: string): any {
+    this.subject.next(message);
+  }
+  getMessage(): Observable<any> {
+    return this.subject.asObservable();
   }
 
   getService(serviceName: string): any {
@@ -43,4 +51,7 @@ export class RbService {
   public get loggedIn(): boolean {
     return (localStorage.getItem('id') !== null);
   }
+  downloadFile(data: any): any {
+    return this.http.get(data, { responseType: 'blob' });
+    }
 }

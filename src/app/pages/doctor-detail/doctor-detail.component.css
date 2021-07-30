@@ -16,6 +16,11 @@
 }
 
 .doctor-detail {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
+    color: #000;
+}
+.doctor-profile-content{
+    font-size: 15px;
+    color: #000;
 }

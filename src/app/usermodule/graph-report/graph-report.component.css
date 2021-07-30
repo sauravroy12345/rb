@@ -1,34 +1,40 @@
-.labl {
-    width: 40%;
-    color: #000;
-    font-weight: 500;
-    font-size: 16px;
-}
-
-.coln {
-    width: 10%;
-    color: #000;
-}
-
 .desc {
-    width: 40%;
+    width: 100%;
 }
-
-.full-labl {
-    width: 19%;
-    color: #000;
-    font-weight: 500;
+.userBox {
+    width: 400px;
 }
-
-.full-coln {
-    width: 5%;
-    color: #000;
+.pdf{
+    float: right;
 }
-
-.full-desc {
-    width: 76%;
+.test-name{
+    height: 46px;
+    /* width: 50px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-
-.download {
-    cursor: pointer;
+.patient-report-box{
+    height: 97px;
 }
+.view{
+    background:#689F38!important;
+    border:none;
+    color:#fff!important;
+    border-radius: 5px;
+    /* width: 100%; */
+    /* padding: 0px 25px;  */
+    width: 100%;
+}
+.tabl{
+    font-size: 12px;
+}
+.tabl thead {
+    background-color: #689F38;
+    color: #FDFDFD;
+  }
+  .tabl tbody tr {
+    line-height: 20px;
+  }
+  .tabl thead tr {
+    line-height: 20px;
+  }
